@@ -1,0 +1,7 @@
+# This is the folder destination for the build output of the Zola site.
+public/
+
+# This is the folder destination for the documentation of the Zola site.
+docs/
+
+
