@@ -1,7 +1,9 @@
 <div
     class="hero-terminal"
+    x-data="heroTerminal"
     role="region"
-    aria-label="Portfolio terminal preview"
+    aria-label="Portfolio terminal"
+    @click="focusInput()"
 >
     <div class="hero-terminal__chrome" aria-hidden="true">
         <span class="hero-terminal__dots">
@@ -12,19 +14,20 @@
         <span class="hero-terminal__title">xingjobo@portfolio:~</span>
     </div>
     <div class="hero-terminal__body">
-        <pre class="hero-terminal__output" aria-live="polite">
-
-$ <span class="hero-terminal__cursor" aria-hidden="true"></span></pre>
-        <form class="hero-terminal__input-row" action="#" method="get" aria-hidden="true">
+        <pre class="hero-terminal__output" x-ref="output" x-text="output" aria-live="polite"></pre>
+        <form class="hero-terminal__input-row" @submit.prevent="runCommand()">
+            <label class="hero-terminal__sr-only" for="terminal-input">Terminal command</label>
             <span class="hero-terminal__prompt" aria-hidden="true">$</span>
             <input
                 class="hero-terminal__input"
+                id="terminal-input"
                 type="text"
-                disabled
-                placeholder="coming soon"
-                aria-label="Terminal command"
+                x-ref="input"
+                x-model="line"
                 autocomplete="off"
                 spellcheck="false"
+                autocapitalize="off"
+                enterkeyhint="go"
             >
         </form>
     </div>

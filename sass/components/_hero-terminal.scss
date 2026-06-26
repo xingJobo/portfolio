@@ -80,31 +80,30 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 }
 
 .hero-terminal__cursor {
-    display: inline-block;
-    width: 0.5em;
-    height: 1.1em;
-    margin-left: 1px;
-    vertical-align: text-bottom;
-    background: $color-accent;
-
-    @media (prefers-reduced-motion: no-preference) {
-        animation: hero-terminal-blink 1.1s step-end infinite;
-    }
-}
-
-@keyframes hero-terminal-blink {
-    50% {
-        opacity: 0;
-    }
+    display: none;
 }
 
 .hero-terminal__input-row {
-    display: none;
+    display: flex;
     align-items: center;
     gap: $spacing-xs;
+    flex-shrink: 0;
     margin-top: $spacing-sm;
     padding-top: $spacing-sm;
     border-top: 1px solid rgba(#fff, 0.08);
+    cursor: text;
+}
+
+.hero-terminal__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .hero-terminal__prompt {
@@ -122,6 +121,11 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     color: rgba(#fff, 0.9);
     background: transparent;
     outline: none;
+
+    &:focus-visible {
+        outline: 1px solid rgba($color-accent, 0.65);
+        outline-offset: 2px;
+    }
 
     &::placeholder {
         color: rgba(#fff, 0.35);
