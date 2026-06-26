@@ -4,6 +4,8 @@ public/
 # Node (lint tooling only)
 node_modules/
 
+docs/
+
 # OS / editor
 .DS_Store
 Thumbs.db

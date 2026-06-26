@@ -1,5 +1,6 @@
 import { completeLine } from "./completion.js";
 import { runCommand } from "./commands.js";
+import { normalizeTerminalContent } from "./vfs.js";
 
 /**
  * @returns {import("./commands.js").TerminalVfs}
@@ -10,7 +11,13 @@ function loadVfs() {
     return { cwd: "/home/xingjobo", files: {} };
   }
 
-  return JSON.parse(element.textContent);
+  const vfs = JSON.parse(element.textContent);
+
+  for (const file of Object.values(vfs.files)) {
+    file.content = normalizeTerminalContent(file.content);
+  }
+
+  return vfs;
 }
 
 function bootMessage(vfs) {

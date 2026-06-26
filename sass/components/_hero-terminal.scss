@@ -6,11 +6,11 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     display: flex;
     flex-direction: column;
     aspect-ratio: 4 / 3;
-    border-radius: 0.5rem;
+    border-radius: 0.875rem;
     overflow: hidden;
-    border: 1px solid rgba($color-text, 0.12);
-    box-shadow: 0 1rem 2.5rem rgba($color-panel, 0.18);
-    background: $color-panel;
+    border: 1px solid $color-border;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.35);
+    background: $color-surface-input;
     font-family: $font-family-mono;
     font-size: clamp(0.6875rem, 1.6vw, 0.8125rem);
     line-height: 1.5;
@@ -32,8 +32,8 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     gap: $spacing-sm;
     flex-shrink: 0;
     padding: $spacing-sm $spacing-md;
-    background: darken($color-panel, 4%);
-    border-bottom: 1px solid rgba(#fff, 0.06);
+    background: $color-surface-elevated;
+    border-bottom: 1px solid $color-border;
 }
 
 .hero-terminal__dots {
@@ -45,18 +45,18 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     width: 0.625rem;
     height: 0.625rem;
     border-radius: 50%;
-    background: rgba(#fff, 0.2);
+    background: rgba(255, 255, 255, 0.2);
 
     &--close {
-        background: #ff5f57;
+        background: $color-terminal-close;
     }
 
     &--minimize {
-        background: #febc2e;
+        background: $color-terminal-minimize;
     }
 
     &--maximize {
-        background: #28c840;
+        background: $color-terminal-maximize;
     }
 }
 
@@ -64,7 +64,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     flex: 1;
     overflow: hidden;
     font-size: 0.6875rem;
-    color: rgba(#fff, 0.45);
+    color: $color-text-muted;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -82,7 +82,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     flex: 1;
     margin: 0;
     overflow: auto;
-    color: rgba(#fff, 0.88);
+    color: $color-text-secondary;
     white-space: pre-wrap;
     word-break: break-word;
     cursor: text;
@@ -104,7 +104,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     flex-shrink: 0;
     margin-top: $spacing-sm;
     padding-top: $spacing-sm;
-    border-top: 1px solid rgba(#fff, 0.08);
+    border-top: 1px solid $color-border;
     cursor: text;
 }
 
@@ -132,7 +132,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     padding: 0;
     border: 0;
     font: inherit;
-    color: rgba(#fff, 0.9);
+    color: $color-text-secondary;
     background: transparent;
     outline: none;
 
@@ -142,7 +142,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     }
 
     &::placeholder {
-        color: rgba(#fff, 0.35);
+        color: $color-text-muted;
     }
 
     &:disabled {

@@ -1,29 +1,38 @@
 @use "../common/variables" as *;
+@use "../common/mixins" as *;
 
 .contact__panel {
-    max-width: 32rem;
+    max-width: 36rem;
+    padding: $spacing-xl;
+    border-radius: 1rem;
+    @include surface-card;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.35);
 }
 
 .contact__badge {
     display: inline-block;
     margin: 0 0 $spacing-md;
-    padding: 0.25rem 0.75rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid $color-accent;
     border-radius: 999px;
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    background: rgba($color-accent, 0.15);
-    color: darken($color-accent, 8%);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: $color-surface-card-end;
+    color: $color-text-ghost;
 }
 
 .contact__title {
     margin: 0 0 $spacing-sm;
     font-size: 1.75rem;
+    color: $color-text-primary;
 }
 
 .contact__lead {
     margin: 0 0 $spacing-xl;
     max-width: 36rem;
-    color: lighten($color-text, 15%);
+    color: $color-text-body;
 }
 
 .contact__form {
@@ -35,19 +44,26 @@
     display: block;
     margin-bottom: $spacing-xs;
     font-size: 0.875rem;
+    color: $color-text-label;
 }
 
 .contact__input {
     width: 100%;
     padding: $spacing-sm $spacing-md;
-    border: 1px solid rgba($color-text, 0.18);
-    border-radius: 0.25rem;
+    border: 1px solid $color-border;
+    border-radius: 0.5rem;
     font: inherit;
-    color: $color-text;
-    background: rgba(#fff, 0.75);
+    color: $color-text-secondary;
+    background: $color-surface-input;
+
+    &:focus-visible {
+        outline: 2px solid rgba($color-accent, 0.65);
+        outline-offset: 1px;
+        border-color: rgba($color-accent, 0.45);
+    }
 
     &::placeholder {
-        color: lighten($color-text, 35%);
+        color: $color-text-muted;
     }
 }
 

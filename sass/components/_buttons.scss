@@ -1,31 +1,37 @@
 @use "../common/variables" as *;
+@use "../common/mixins" as *;
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: $spacing-sm $spacing-lg;
-    border: 2px solid transparent;
-    border-radius: 0.25rem;
+    border: 1.5px solid transparent;
+    border-radius: 0.625rem;
     font: inherit;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
+    transition:
+        filter 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .btn--primary {
-    background: $color-accent;
-    color: #fff;
+    @include accent-gradient;
+    color: $color-text-on-accent;
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.35);
 
     &:hover,
     &:focus-visible {
-        filter: brightness(1.05);
+        filter: brightness(1.08);
     }
 }
 
 .btn--ghost {
-    border-color: rgba($color-text, 0.2);
-    color: $color-text;
+    border-color: $color-border-strong;
+    color: $color-text-ghost;
     background: transparent;
 
     &:hover,

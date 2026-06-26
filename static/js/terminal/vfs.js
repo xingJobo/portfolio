@@ -5,6 +5,15 @@
  */
 
 /**
+ * Tera string literals like "\n" can end up as two-character sequences in JSON.
+ * @param {string} content
+ * @returns {string}
+ */
+export function normalizeTerminalContent(content) {
+  return content.replace(/\\n/g, "\n").replace(/\\t/g, "\t");
+}
+
+/**
  * @param {TerminalVfs} vfs
  * @param {{ all?: boolean }} [options]
  * @returns {string[]}
@@ -31,7 +40,7 @@ export function readFile(vfs, query) {
     return null;
   }
 
-  return { name, content: vfs.files[name].content };
+  return { name, content: normalizeTerminalContent(vfs.files[name].content) };
 }
 
 /**

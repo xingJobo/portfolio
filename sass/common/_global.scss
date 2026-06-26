@@ -1,4 +1,18 @@
 @use "variables" as *;
+@use "mixins" as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: $font-family-base;
+    color: $color-text-primary;
+    background: $color-bg-deep;
+}
 
 .skip-link {
     position: absolute;
@@ -6,8 +20,8 @@
     left: 0;
     z-index: 100;
     padding: $spacing-sm $spacing-md;
-    background: $color-accent;
-    color: #fff;
+    @include accent-gradient;
+    color: $color-text-on-accent;
     text-decoration: none;
     transform: translateY(-120%);
 
@@ -26,14 +40,7 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    background-color: $color-page;
-    background-image: linear-gradient(
-        155deg,
-        rgba($color-accent, 0.14) 0%,
-        rgba($color-accent, 0.05) 28%,
-        $color-page 55%,
-        rgba($color-panel, 0.08) 100%
-    );
+    @include page-background;
 }
 
 .main {
@@ -58,15 +65,30 @@ html {
     margin: 0 0 $spacing-md;
     font-size: 1.75rem;
     font-weight: 600;
+    color: $color-text-primary;
 }
 
 .section__lead {
     margin: 0 0 $spacing-xl;
     max-width: 42rem;
-    color: lighten($color-text, 15%);
+    color: $color-text-body;
 }
 
 .section__empty {
     margin: 0;
-    color: lighten($color-text, 25%);
+    color: $color-text-muted;
+}
+
+.page__content {
+    color: $color-text-body;
+    line-height: 1.65;
+
+    a {
+        color: $color-accent;
+    }
+
+    h2,
+    h3 {
+        color: $color-text-primary;
+    }
 }

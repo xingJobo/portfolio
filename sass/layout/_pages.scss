@@ -1,7 +1,5 @@
 @use "../common/variables" as *;
 
-
-
 .container {
     max-width: 72rem;
     margin-inline: auto;
@@ -29,7 +27,7 @@
     }
 
     & + & {
-        border-top: 1px solid rgba($color-text, 0.08);
+        border-top: 1px solid $color-border;
     }
 }
 
@@ -47,7 +45,7 @@
     margin: 0 0 $spacing-sm;
     font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: $color-accent;
 }
@@ -56,12 +54,13 @@
     margin: 0 0 $spacing-md;
     font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1.15;
+    color: $color-text-primary;
 }
 
 .hero__lead {
     margin: 0 0 $spacing-xl;
     max-width: 36rem;
-    color: lighten($color-text, 15%);
+    color: $color-text-body;
 }
 
 .hero__actions {
@@ -100,5 +99,5 @@
 
 .process__step-text {
     margin: 0;
-    color: lighten($color-text, 15%);
+    color: $color-text-body;
 }

@@ -8,7 +8,7 @@ import { formatFileListing, listFiles, readFile } from "./vfs.js";
 
 const HELP_TEXT = [
   "Available commands:",
-  "  ls [-a]     list files (use -a for hidden dotfiles)",
+  "  ls          list files",
   "  cat FILE    print file contents",
   "  clear       clear the screen",
   "  help        show this message",
@@ -56,7 +56,7 @@ export function runCommand(vfs, input) {
     case "clear":
       return { lines: [], clear: true };
     case "whoami":
-      return { lines: ["xingJobo"] };
+      return { lines: ["Visitor X"] };
     case "pwd":
       return { lines: [vfs.cwd ?? "/home/xingjobo"] };
     default:
