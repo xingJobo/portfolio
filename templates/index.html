@@ -1,12 +1,7 @@
 {% extends "base.html" %}
 
 {% block sidebar %}
-<aside
-    class="sidebar"
-    aria-label="Section navigation"
-    x-data="{ navOpen: false }"
-    @keydown.escape.window="navOpen = false"
->
+<aside class="sidebar" aria-label="Section navigation">
     {% include "macros/shell/scroll-nav.html" %}
 </aside>
 {% endblock sidebar %}
@@ -22,5 +17,6 @@
 
 {% block scripts %}
 <script type="module" src="{{ get_url(path='js/terminal/index.js') | safe }}"></script>
+<script type="module" src="{{ get_url(path='js/scroll-nav.js') | safe }}"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
 {% endblock scripts %}
