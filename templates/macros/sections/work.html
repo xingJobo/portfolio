@@ -8,6 +8,7 @@
             {% for page in projects.pages %}
             {% include "macros/components/project-card.html" %}
             {% endfor %}
+            {% include "macros/components/project-card-placeholder.html" %}
         </div>
         {% else %}
         <p class="section__empty">Project case studies coming soon.</p>

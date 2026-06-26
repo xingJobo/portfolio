@@ -1,11 +1,12 @@
 +++
 title = "Inventory Sync"
 date = 2025-03-01
-description = "Automated stock reconciliation across warehouse and e-commerce channels."
+description = "Real-time stock reconciliation across warehouses."
 template = "page.html"
 
 [extra]
-tags = ["Rust", "PostgreSQL", "API"]
+thumbnail = "inventory"
+tags = ["Rust", "PostgreSQL"]
 +++
 
 Placeholder case study — replace with real project narrative.

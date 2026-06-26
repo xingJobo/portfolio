@@ -40,10 +40,24 @@ $color-text: $color-text-primary;
 $color-page: $color-bg-base;
 $color-panel: $color-surface-card-start;
 
+// Terminal (portfolio-mockup-concept.svg)
+$color-terminal-bg: #0d1218;
+$color-terminal-chrome: #161d27;
+$color-terminal-cmd: #6b7d94;
+$color-terminal-text: #e8edf4;
+$color-terminal-accent: #2ee6a8;
+$color-terminal-path: #1cb8e8;
+$color-terminal-error: #f38ba8;
+
 // Terminal chrome (macOS-style dots in mockups)
 $color-terminal-close: #ff5f57;
 $color-terminal-minimize: #febc2e;
 $color-terminal-maximize: #28c840;
+
+// Project card media blocks (mockup variants)
+$color-card-media-1: #1e2d3d;
+$color-card-media-2: #1a2635;
+$color-card-media-3: #1c2430;
 
 $font-family-base: system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
 

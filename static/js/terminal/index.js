@@ -1,7 +1,7 @@
 import { completeLine } from "./completion.js";
 import { runCommand } from "./commands.js";
+import { formatTerminalOutput } from "./format.js";
 import { normalizeTerminalContent } from "./vfs.js";
-
 /**
  * @returns {import("./commands.js").TerminalVfs}
  */
@@ -32,6 +32,10 @@ document.addEventListener("alpine:init", () => {
     history: [],
     historyIndex: -1,
     historyDraft: "",
+
+    get formattedOutput() {
+      return formatTerminalOutput(this.output);
+    },
 
     init() {
       this.output = bootMessage(this.vfs);

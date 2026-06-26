@@ -1,11 +1,12 @@
 +++
 title = "Ops Checklist"
 date = 2025-01-15
-description = "Runbook tooling for repeatable deployment and incident response."
+description = "Deployment runbooks turned into living workflows."
 template = "page.html"
 
 [extra]
-tags = ["DevOps", "Docker", "CI/CD"]
+thumbnail = "checklist"
+tags = ["TypeScript", "Docker"]
 +++
 
 Placeholder case study — replace with real project narrative.

@@ -1,8 +1,55 @@
+{% set about = load_data(path="data/about.yaml") %}
+{% set projects = get_section(path="projects/_index.md") %}
 <section id="about" class="section about">
-    <div class="container">
-        <h2 class="section__title">About</h2>
-        <p class="section__lead">
-            {{ section.extra.about_lead | default(value="Building reliable software with a focus on clarity, maintainability, and user impact.") }}
+    <div class="container about__inner">
+        {% if projects.pages %}
+        <p class="about__strip" aria-hidden="true">
+            {% for page in projects.pages %}
+            {{ page.title }}{% if not loop.last %} &middot; {% endif %}
+            {% endfor %}
         </p>
+        {% endif %}
+
+        <header class="about__header">
+            <p class="about__eyebrow">About</p>
+            <h2 class="about__title">About</h2>
+            <p class="about__lead">
+                {{ section.extra.about_lead | default(value="Building reliable software with a focus on clarity, maintainability, and user impact.") }}
+            </p>
+        </header>
+
+        <div class="about__layout">
+            <aside class="about__card">
+                <div class="about__avatar" aria-hidden="true">
+                    <span class="about__initials">{{ about.profile.initials }}</span>
+                </div>
+                <p class="about__name">{{ config.title }}</p>
+                <p class="about__role">{{ section.extra.subtitle | default(value="Software developer") }}</p>
+                {% if about.profile.resume_url %}
+                <a class="about__resume btn btn--ghost" href="{{ about.profile.resume_url }}">
+                    {{ about.profile.resume_label | default(value="Download resume") }}
+                </a>
+                {% else %}
+                <span class="about__resume about__resume--placeholder">
+                    {{ about.profile.resume_label | default(value="Download resume") }}
+                </span>
+                {% endif %}
+            </aside>
+
+            <div class="about__copy">
+                {% for paragraph in about.bio %}
+                <p class="about__paragraph">{{ paragraph | trim | safe }}</p>
+                {% endfor %}
+            </div>
+
+            <ul class="about__pillars">
+                {% for pillar in about.pillars %}
+                <li class="about__pillar">
+                    <h3 class="about__pillar-title">{{ pillar.title }}</h3>
+                    <p class="about__pillar-text">{{ pillar.text }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </section>

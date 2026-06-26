@@ -9,8 +9,8 @@ import { formatFileListing, listFiles, readFile } from "./vfs.js";
 const HELP_TEXT = [
   "Available commands:",
   "  ls          list files",
-  "  cat FILE    print file contents",
-  "  clear       clear the screen",
+  "  cat         print file contents",
+  "  clear       clears the terminal screen",
   "  help        show this message",
   "  whoami      print username",
   "  pwd         print working directory",

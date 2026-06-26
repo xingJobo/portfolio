@@ -1,0 +1,24 @@
+# About section — bio, profile card, value pillars (see docs/planning/portfolio-mockup-about.svg)
+
+profile:
+  initials: "XJ"
+  resume_label: "Download resume"
+  # resume_url: "/resume.pdf"  # uncomment when a resume is ready
+
+bio:
+  - |
+    I turn complex requirements into software teams can own. I care about the full
+    lifecycle: discovery, architecture, delivery, and the handoff that keeps
+    velocity high after launch.
+  - |
+    I'm a strong fit when you need someone who can lead technically without losing
+    sight of product outcomes — and who documents decisions so the next engineer
+    is not starting from zero.
+
+pillars:
+  - title: Clarity
+    text: Readable code, explicit contracts, honest estimates.
+  - title: Maintainability
+    text: Tests, observability, and patterns that scale with the team.
+  - title: Impact
+    text: Ship outcomes that matter to users and the business.
