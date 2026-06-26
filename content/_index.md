@@ -1,5 +1,5 @@
 +++
-title = "Klixa"
+title = "xingJobo"
 template = "index.html"
 description = "Portfolio — software development and case studies"
 

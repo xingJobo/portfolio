@@ -1,7 +1,6 @@
-# Klixa portfolio — architecture
+# xingJobo portfolio — architecture
 
-Zola static site for the Klixa one-page portfolio and project case studies.  
-Visual target: parent repo `docs/mockups/Mockup_Portfolio_Klixa_filled.svg`.  
+Zola static site for the xingJobo personal portfolio and project case studies.  
 Task breakdown: parent repo `docs/planning/work_packages.md`.
 
 ## Stack

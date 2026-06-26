@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Klixa portfolio — Zola static site",
+  "description": "xingJobo portfolio — Zola static site",
   "private": true,
   "repository": {
     "type": "git",

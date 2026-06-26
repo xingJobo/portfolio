@@ -1,4 +1,4 @@
-# Klixa portfolio
+# xingJobo portfolio
 
 Zola static site — [architecture](docs/architecture.md).
 

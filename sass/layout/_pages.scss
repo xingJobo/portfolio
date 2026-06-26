@@ -1,7 +1,36 @@
 @use "../common/variables" as *;
 
-.hero {
-    padding-block: 5rem 4rem;
+@use "../common/variables" as *;
+
+.container {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: $spacing-lg;
+
+    @media (min-width: 768px) {
+        padding-inline: $spacing-xl;
+    }
+}
+
+.section {
+    padding-block: $spacing-3xl;
+    scroll-margin-top: $spacing-xl;
+
+    @media (min-width: 768px) {
+        padding-block: 6rem;
+    }
+
+    &:first-child {
+        padding-top: clamp(4.5rem, 11vw, 7rem);
+    }
+
+    &:last-child {
+        padding-bottom: clamp(4.5rem, 11vw, 7rem);
+    }
+
+    & + & {
+        border-top: 1px solid rgba($color-text, 0.08);
+    }
 }
 
 .hero__inner {
