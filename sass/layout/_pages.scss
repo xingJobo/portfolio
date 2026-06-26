@@ -27,7 +27,22 @@
     }
 
     & + & {
-        border-top: 1px solid $color-border;
+        position: relative;
+        border-top: none;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: min(72rem, calc(100% - #{$spacing-lg * 2}));
+            border-top: 1px solid $color-border;
+            transform: translateX(-50%);
+
+            @media (min-width: 768px) {
+                width: min(72rem, calc(100% - #{$spacing-xl * 2}));
+            }
+        }
     }
 }
 

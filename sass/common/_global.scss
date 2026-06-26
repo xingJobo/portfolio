@@ -33,6 +33,7 @@ body {
 .site {
     display: flex;
     min-height: 100vh;
+    @include page-background;
 }
 
 .site__main {
@@ -40,7 +41,6 @@ body {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    @include page-background;
 }
 
 .main {

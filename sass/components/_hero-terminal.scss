@@ -60,7 +60,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
     align-items: center;
 
-    gap: $spacing-sm;
+    justify-content: center;
 
     flex-shrink: 0;
 
@@ -74,57 +74,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
 
 
-.hero-terminal__dots {
-
-    display: flex;
-
-    gap: 0.35rem;
-
-}
-
-
-
-.hero-terminal__dot {
-
-    width: 0.625rem;
-
-    height: 0.625rem;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.2);
-
-
-
-    &--close {
-
-        background: $color-terminal-close;
-
-    }
-
-
-
-    &--minimize {
-
-        background: $color-terminal-minimize;
-
-    }
-
-
-
-    &--maximize {
-
-        background: $color-terminal-maximize;
-
-    }
-
-}
-
-
-
 .hero-terminal__title {
-
-    flex: 1;
 
     overflow: hidden;
 
