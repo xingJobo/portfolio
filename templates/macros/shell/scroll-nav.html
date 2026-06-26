@@ -3,9 +3,9 @@
     <ol class="scroll-nav__list">
         {% for item in nav.sections %}
         <li class="scroll-nav__item">
-            <a class="scroll-nav__link" href="#{{ item.id }}" title="{{ item.label }}">
+            <a class="scroll-nav__link" href="#{{ item.id }}">
                 <span class="scroll-nav__tick" aria-hidden="true"></span>
-                <span class="scroll-nav__label">{{ item.short_label }}</span>
+                <span class="scroll-nav__label">{{ item.name }}</span>
             </a>
         </li>
         {% endfor %}

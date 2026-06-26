@@ -2,8 +2,10 @@
 
 {% block sidebar %}
 <aside class="sidebar" aria-label="Section navigation">
-    <p class="sidebar__brand">{{ config.title }}</p>
-    <p class="sidebar__meta">portfolio</p>
+    <header class="sidebar__header">
+        <p class="sidebar__brand">{{ config.title }}</p>
+        <p class="sidebar__meta">portfolio</p>
+    </header>
     {% include "macros/shell/scroll-nav.html" %}
 </aside>
 {% endblock sidebar %}

@@ -1,20 +1,14 @@
-# Scroll sections 01–06 — ids must match DOM on home page
+# Scroll sections — ids must match DOM on home page
 sections:
   - id: hero
-    label: "01 Hero"
-    short_label: "01"
+    name: Hero
   - id: work
-    label: "02 Work"
-    short_label: "02"
+    name: Work
   - id: about
-    label: "03 About"
-    short_label: "03"
+    name: About
   - id: process
-    label: "04 Process"
-    short_label: "04"
+    name: Process
   - id: skills
-    label: "05 Skills"
-    short_label: "05"
+    name: Skills
   - id: contact
-    label: "06 Contact"
-    short_label: "06"
+    name: Contact

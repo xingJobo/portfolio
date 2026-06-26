@@ -1,15 +1,33 @@
 @use "../common/variables" as *;
 
+@mixin vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
 .sidebar {
     position: sticky;
     top: 0;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-shrink: 0;
     width: $sidebar-width;
-    min-height: 100vh;
-    padding-block: $spacing-xl $spacing-lg;
+    max-height: 100vh;
+    padding: $spacing-xl $spacing-sm;
+    overflow-y: auto;
     border-right: 1px solid rgba($color-text, 0.1);
+}
+
+.sidebar__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-xl;
+    cursor: default;
+    user-select: none;
 }
 
 .sidebar__brand {
@@ -18,27 +36,26 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    @include vertical-text;
 }
 
 .sidebar__meta {
-    margin: $spacing-lg 0 0;
+    margin: 0;
     font-size: 0.625rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: lighten($color-text, 30%);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    @include vertical-text;
 }
 
 .scroll-nav {
-    margin-top: auto;
+    width: 100%;
 }
 
 .scroll-nav__list {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: $spacing-md;
     margin: 0;
     padding: 0;
@@ -50,13 +67,20 @@
     flex-direction: column;
     align-items: center;
     gap: $spacing-xs;
-    color: inherit;
+    padding: $spacing-xs 0;
+    color: lighten($color-text, 20%);
     text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
 
-    &:hover .scroll-nav__tick,
-    &:focus-visible .scroll-nav__tick {
-        background: $color-accent;
-        width: 1.5rem;
+    &:hover,
+    &:focus-visible {
+        color: $color-text;
+
+        .scroll-nav__tick {
+            width: 1.5rem;
+            background: $color-accent;
+        }
     }
 }
 
@@ -71,7 +95,8 @@
 .scroll-nav__label {
     font-size: 0.625rem;
     letter-spacing: 0.05em;
-    color: lighten($color-text, 25%);
+    line-height: 1;
+    @include vertical-text;
 }
 
 @media (max-width: 768px) {
