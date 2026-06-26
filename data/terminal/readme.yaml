@@ -9,6 +9,6 @@ content: |
     help        list all commands
     clear       clear the screen
 
+  Tip: Tab completes commands and filenames. ↑ / ↓ browse history.
 
-
-
+boot_hint: "Try: ls — or ls -a for hidden files."

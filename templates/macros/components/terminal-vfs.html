@@ -4,7 +4,10 @@
 {% set easter_eggs = load_data(path="data/terminal/easter-eggs.yaml") %}
 {% set readme = load_data(path="data/terminal/readme.yaml") %}
 
+{% set readme_content = readme.content %}
+{% if readme.boot_hint %}
 {% set readme_content = readme.content ~ "\n\n" ~ readme.boot_hint %}
+{% endif %}
 
 {% set about_content = "# About\n\n**" ~ section.extra.subtitle ~ "**\n\n" ~ section.extra.headline ~ "\n\n" ~ section.extra.lead ~ "\n\n" ~ section.extra.about_lead %}
 

@@ -14,6 +14,10 @@ const HELP_TEXT = [
   "  help        show this message",
   "  whoami      print username",
   "  pwd         print working directory",
+  "",
+  "Tips:",
+  "  ↑ / ↓       command history",
+  "  Tab         complete command or filename",
 ].join("\n");
 
 /**

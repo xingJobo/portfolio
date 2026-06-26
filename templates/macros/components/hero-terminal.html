@@ -1,5 +1,5 @@
 <p id="terminal-hint" class="hero-terminal__sr-only">
-    Interactive terminal. Type a command and press Enter. Try ls, cat about.md, or help. Use ls -a to reveal hidden dotfiles.
+    Interactive terminal. Type a command and press Enter. Try ls, cat about.md, or help. Use ls -a to reveal hidden dotfiles. Press Up or Down for history, Tab to complete.
 </p>
 <div
     class="hero-terminal"
@@ -44,6 +44,7 @@
                 autocapitalize="off"
                 enterkeyhint="go"
                 aria-controls="terminal-output"
+                @keydown="handleKeydown($event)"
             >
         </form>
     </div>
