@@ -2,12 +2,56 @@
 @use "../common/mixins" as *;
 
 .skills__inner {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+}
+
+.skills__strip {
+    margin: 0;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: $color-text-subtle;
+    opacity: 0.3;
+}
+
+.skills__header {
+    max-width: 40rem;
+}
+
+.skills__eyebrow {
+    margin: 0 0 $spacing-sm;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-accent;
+}
+
+.skills__title {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: $color-text-primary;
+}
+
+.skills__layout {
     display: grid;
     gap: $spacing-xl;
+    align-items: start;
 
-    @media (min-width: 768px) {
-        grid-template-columns: 1.2fr 1fr;
+    @media (min-width: 900px) {
+        grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 1fr);
+        gap: $spacing-2xl;
     }
+}
+
+.skills__primary {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
 }
 
 .skills__bars {
@@ -23,13 +67,23 @@
 .skills__bar-header {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     margin-bottom: $spacing-xs;
     font-size: 0.875rem;
-    color: $color-text-secondary;
+}
+
+.skills__bar-name {
+    color: $color-text-ghost;
+}
+
+.skills__bar-value {
+    font-family: ui-monospace, "Cascadia Code", menlo, consolas, monospace;
+    font-size: 0.8125rem;
+    color: $color-text-label;
 }
 
 .skills__bar-track {
-    height: 0.5rem;
+    height: 0.625rem;
     border-radius: 999px;
     background: $color-surface-muted;
     overflow: hidden;
@@ -43,27 +97,101 @@
     @include accent-gradient;
 }
 
-.skills__also-title {
-    margin: 0 0 $spacing-md;
-    font-size: 1rem;
+.skills__bars-note {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: $color-text-subtle;
+}
+
+.skills__signal-card {
+    padding: $spacing-md $spacing-lg;
+    border-radius: 0.625rem;
+    background: rgba($color-surface-card-start, 0.7);
+    border: 1px solid $color-border;
+}
+
+.skills__signal-label {
+    margin: 0 0 $spacing-xs;
+    font-size: 0.5625rem;
     font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-accent;
+}
+
+.skills__signal-text {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: $color-text-body;
+}
+
+.skills__comfort-card {
+    padding: $spacing-lg $spacing-xl $spacing-xl;
+    border-radius: 0.875rem;
+    background: $color-surface-card-end;
+    border: 1px solid $color-border;
+    box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.35);
+}
+
+.skills__comfort-title {
+    margin: 0 0 $spacing-md;
+    padding-bottom: $spacing-md;
+    font-size: 1.125rem;
+    font-weight: 700;
     color: $color-text-primary;
+    border-bottom: 1px solid $color-border;
 }
 
 .skills__tags {
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-sm;
-    margin: 0;
+    margin: 0 0 $spacing-xl;
     padding: 0;
     list-style: none;
 }
 
 .skills__tag {
-    padding: $spacing-xs $spacing-sm;
+    padding: $spacing-sm $spacing-md;
     border: 1px solid $color-border;
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
+    border-radius: 0.375rem;
+    font-family: ui-monospace, "Cascadia Code", menlo, consolas, monospace;
+    font-size: 0.75rem;
     color: $color-text-label;
     background: $color-surface-chip;
+
+    &--mint {
+        color: $color-accent;
+    }
+
+    &--cyan {
+        color: $color-accent-secondary;
+    }
+}
+
+.skills__tooling {
+    padding-top: $spacing-md;
+    border-top: 1px solid $color-border;
+}
+
+.skills__tooling-label {
+    margin: 0 0 $spacing-sm;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-text-nav;
+}
+
+.skills__tooling-line {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: $color-text-subtle;
+
+    & + & {
+        margin-top: $spacing-xs;
+    }
 }

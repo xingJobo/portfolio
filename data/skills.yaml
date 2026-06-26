@@ -1,3 +1,12 @@
+# Skills section — see docs/planning/portfolio-mockup-skills.svg
+
+title: Core stack
+bars_footnote: Bars reflect depth of production experience, not vanity metrics.
+
+employer_signal:
+  label: Employer signal
+  text: Strongest where backend meets product — APIs, data models, and the UI that surfaces them.
+
 bars:
   - name: Backend
     level: 85
@@ -11,3 +20,13 @@ also_comfortable_with:
   - TypeScript
   - Docker
   - PostgreSQL
+  - AWS
+  - GitHub
+  - GraphQL
+  - Redis
+
+recent_tooling:
+  label: Recent tooling
+  lines:
+    - Zola, Alpine.js, GitHub Actions, Formspree
+    - OpenTelemetry, Terraform, Kubernetes
