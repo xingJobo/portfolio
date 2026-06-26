@@ -1,0 +1,445 @@
+@use "../common/variables" as *;
+@use "../common/mixins" as *;
+
+$font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, consolas, monospace;
+
+.case-study {
+    padding-block: clamp(3rem, 8vw, 5rem);
+}
+
+.case-study__intro {
+    margin-bottom: $spacing-xl;
+}
+
+.case-study__toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: $spacing-lg;
+}
+
+.case-study__back {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-accent;
+
+    &:hover,
+    &:focus-visible {
+        color: $color-accent-secondary;
+    }
+}
+
+.case-study__back-icon {
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+.case-study__breadcrumb {
+    margin-bottom: $spacing-xl;
+    font-family: $font-family-mono;
+    font-size: 0.6875rem;
+
+    a {
+        color: $color-text-nav;
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+            color: $color-accent;
+        }
+    }
+}
+
+.case-study__breadcrumb-sep {
+    margin-inline: $spacing-xs;
+    color: $color-border-strong;
+}
+
+.case-study__breadcrumb-current {
+    color: $color-accent;
+}
+
+.case-study__eyebrow {
+    margin: 0 0 $spacing-md;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-accent;
+}
+
+.case-study__title {
+    margin: 0 0 $spacing-sm;
+    max-width: 18ch;
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.1;
+    color: $color-text-primary;
+}
+
+.case-study__deck {
+    margin: 0 0 $spacing-lg;
+    max-width: 40rem;
+    font-size: 1.125rem;
+    line-height: 1.45;
+    color: $color-text-body;
+}
+
+.case-study__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.case-study__meta-item {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid $color-border;
+    border-radius: 0.375rem;
+    font-family: $font-family-mono;
+    font-size: 0.625rem;
+    color: $color-text-label;
+    background: $color-surface-card-start;
+
+    &--accent {
+        color: $color-accent;
+    }
+
+    &--cyan {
+        color: $color-accent-secondary;
+    }
+}
+
+.case-study__showcase {
+    display: grid;
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+
+    @media (min-width: 1024px) {
+        grid-template-columns: minmax(0, 1fr) 20rem;
+        align-items: stretch;
+    }
+}
+
+.case-study-diagram {
+    position: relative;
+    min-height: 12.5rem;
+    padding: $spacing-lg;
+    border: 1px solid $color-border;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #1a2a3a 0%, #152030 50%, #1e3044 100%);
+    box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.35);
+    overflow-x: auto;
+}
+
+.case-study-diagram__flow {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    min-width: 36rem;
+    padding-block: $spacing-md;
+}
+
+.case-study-diagram__node {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 6.25rem;
+    min-height: 4rem;
+    padding: $spacing-sm;
+    border: 1px solid $color-border-strong;
+    border-radius: 0.5rem;
+    background: $color-surface-muted;
+    text-align: center;
+}
+
+.case-study-diagram__label {
+    font-family: $font-family-mono;
+    font-size: 0.625rem;
+    color: $color-text-body;
+}
+
+.case-study-diagram__sublabel {
+    margin-top: 0.15rem;
+    font-family: $font-family-mono;
+    font-size: 0.5625rem;
+    color: $color-text-nav;
+}
+
+.case-study-diagram__arrow {
+    flex-shrink: 0;
+    position: relative;
+    width: 2rem;
+    height: 2px;
+    background: $color-accent;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-left: 6px solid $color-accent;
+        transform: translateY(-50%);
+    }
+}
+
+.case-study-diagram__services {
+    display: grid;
+    grid-template-columns: repeat(2, 5.5rem);
+    gap: $spacing-xs;
+}
+
+.case-study-diagram__service {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    border: 1px solid $color-border;
+    border-radius: 0.375rem;
+    font-family: $font-family-mono;
+    font-size: 0.5625rem;
+    background: $color-surface-chip;
+
+    &--accent {
+        border-color: rgba($color-accent, 0.5);
+        color: $color-accent;
+    }
+
+    &--cyan {
+        border-color: rgba($color-accent-secondary, 0.5);
+        color: $color-accent-secondary;
+    }
+}
+
+.case-study-diagram__bus {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 6.25rem;
+    min-height: 4rem;
+    padding: $spacing-sm;
+    border: 1px solid $color-border-strong;
+    border-radius: 0.5rem;
+    background: $color-surface-muted;
+    text-align: center;
+}
+
+.case-study-diagram__caption {
+    position: absolute;
+    right: $spacing-lg;
+    bottom: $spacing-md;
+    margin: 0;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-text-nav;
+}
+
+.case-study__glance {
+    padding: $spacing-lg;
+    border: 1px solid $color-border;
+    border-radius: 0.75rem;
+    background: linear-gradient(180deg, $color-surface-card-start 0%, #121a24 100%);
+    box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.35);
+}
+
+.case-study__glance-title {
+    margin: 0 0 $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 1px solid $color-border;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-accent;
+}
+
+.case-study__glance-list {
+    margin: 0;
+}
+
+.case-study__glance-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $spacing-md;
+    margin-bottom: $spacing-sm;
+
+    dt {
+        margin: 0;
+        font-size: 0.75rem;
+        color: $color-text-subtle;
+    }
+
+    dd {
+        margin: 0;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: $color-text-primary;
+        text-align: right;
+    }
+}
+
+.case-study__glance-value--accent {
+    color: $color-accent;
+}
+
+.case-study__glance-value--cyan {
+    color: $color-accent-secondary;
+}
+
+.case-study__glance-footnote {
+    margin: $spacing-md 0 0;
+    padding-top: $spacing-sm;
+    border-top: 1px solid $color-border;
+    font-family: $font-family-mono;
+    font-size: 0.625rem;
+    color: $color-text-nav;
+}
+
+.case-study__columns {
+    display: grid;
+    gap: $spacing-2xl;
+
+    @media (min-width: 900px) {
+        grid-template-columns: minmax(0, 1fr) 17.5rem;
+        align-items: start;
+    }
+}
+
+.case-study__main {
+    h2 {
+        margin: 0 0 $spacing-md;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: $color-accent;
+    }
+
+    h2:not(:first-child) {
+        margin-top: $spacing-xl;
+    }
+
+    p {
+        margin: 0 0 $spacing-md;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: $color-text-body;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        position: relative;
+        margin-bottom: $spacing-sm;
+        padding-left: 1rem;
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        color: $color-text-ghost;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0.55em;
+            left: 0;
+            width: 0.375rem;
+            height: 0.375rem;
+            border-radius: 50%;
+            background: $color-accent;
+        }
+    }
+}
+
+.case-study__outcome-title {
+    margin: 0 0 $spacing-md;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-accent;
+}
+
+.case-study__outcome-headline {
+    margin: 0 0 $spacing-xs;
+    padding: $spacing-md;
+    border: 1px solid $color-border;
+    border-radius: 0.625rem;
+    font-size: 1.375rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $color-text-primary;
+    background: $color-surface-card-end;
+}
+
+.case-study__outcome-detail {
+    margin: 0 0 $spacing-md;
+    padding-inline: $spacing-md;
+    font-size: 0.75rem;
+    color: $color-text-subtle;
+}
+
+.case-study__outcome-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+
+    .btn {
+        flex: 1 1 auto;
+        min-width: 8rem;
+        font-size: 0.625rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+}
+
+.case-study__pager {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-lg;
+    margin-top: $spacing-2xl;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $color-border;
+}
+
+.case-study__pager-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: 0.8125rem;
+    text-decoration: none;
+    color: $color-text-nav;
+
+    &:hover,
+    &:focus-visible {
+        color: $color-accent;
+    }
+
+    &--next {
+        margin-left: auto;
+    }
+}
+
+.case-study__pager-icon {
+    font-size: 0.875rem;
+    line-height: 1;
+}

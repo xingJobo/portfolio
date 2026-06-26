@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% set projects_section = get_section(path="projects/_index.md") %}
+<article class="case-study">
+    <div class="container case-study__intro">
+        <div class="case-study__toolbar">
+            <a class="case-study__back" href="{{ get_url(path='/') }}#work">
+                <span class="case-study__back-icon" aria-hidden="true">←</span>
+                Back to work
+            </a>
+        </div>
+
+        <nav class="case-study__breadcrumb" aria-label="Breadcrumb">
+            <a href="{{ get_url(path='/') }}#work">work</a>
+            <span class="case-study__breadcrumb-sep" aria-hidden="true">/</span>
+            <span class="case-study__breadcrumb-current" aria-current="page">{{ page.slug }}</span>
+        </nav>
+
+        <header class="case-study__header">
+            <p class="case-study__eyebrow">Case study</p>
+            <h1 class="case-study__title">{{ page.title }}</h1>
+            {% if page.description %}
+            <p class="case-study__deck">{{ page.description }}</p>
+            {% endif %}
+
+            {% if page.extra.role or page.extra.duration or page.extra.tags %}
+            <ul class="case-study__meta">
+                {% if page.extra.role %}
+                <li class="case-study__meta-item">{{ page.extra.role }}</li>
+                {% endif %}
+                {% if page.extra.duration %}
+                <li class="case-study__meta-item">{{ page.extra.duration }}</li>
+                {% endif %}
+                {% if page.extra.tags %}
+                {% for tag in page.extra.tags %}
+                <li class="case-study__meta-item{% if page.extra.highlight_tags and tag == page.extra.highlight_tags[0] %} case-study__meta-item--accent{% elif page.extra.highlight_tags and page.extra.highlight_tags | length > 1 and tag == page.extra.highlight_tags[1] %} case-study__meta-item--cyan{% elif loop.index0 == 0 and not page.extra.highlight_tags %} case-study__meta-item--accent{% endif %}">{{ tag }}</li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+            {% endif %}
+        </header>
+    </div>
+
+    {% if page.extra.diagram or page.extra.glance %}
+    <div class="container case-study__showcase">
+        {% if page.extra.diagram %}
+        {% include "macros/components/case-study-diagram.html" %}
+        {% endif %}
+
+        {% if page.extra.glance %}
+        <aside class="case-study__glance" aria-label="At a glance">
+            <h2 class="case-study__glance-title">At a glance</h2>
+            <dl class="case-study__glance-list">
+                {% for item in page.extra.glance %}
+                <div class="case-study__glance-row">
+                    <dt>{{ item.label }}</dt>
+                    <dd{% if item.accent %} class="case-study__glance-value--accent"{% elif item.accent_secondary %} class="case-study__glance-value--cyan"{% endif %}>{{ item.value }}</dd>
+                </div>
+                {% endfor %}
+            </dl>
+            {% if page.extra.glance_footnote %}
+            <p class="case-study__glance-footnote">{{ page.extra.glance_footnote }}</p>
+            {% endif %}
+        </aside>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="container case-study__body">
+        <div class="case-study__columns">
+            <div class="case-study__main page__content">
+                {{ page.content | safe }}
+            </div>
+
+            {% if page.extra.outcome_headline or page.extra.outcome_detail or page.extra.github_url %}
+            <aside class="case-study__outcome" aria-label="Outcome">
+                <h2 class="case-study__outcome-title">Outcome</h2>
+                {% if page.extra.outcome_headline %}
+                <p class="case-study__outcome-headline">{{ page.extra.outcome_headline }}</p>
+                {% endif %}
+                {% if page.extra.outcome_detail %}
+                <p class="case-study__outcome-detail">{{ page.extra.outcome_detail }}</p>
+                {% endif %}
+                <div class="case-study__outcome-actions">
+                    <a class="btn btn--ghost" href="#case-study-writeup">Read full write-up</a>
+                    {% if page.extra.github_url %}
+                    <a class="btn btn--primary" href="{{ page.extra.github_url }}" rel="noopener noreferrer">View on GitHub</a>
+                    {% endif %}
+                </div>
+            </aside>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if page.extra.nav_prev or page.extra.nav_next %}
+    <nav class="case-study__pager container" aria-label="Other case studies">
+        {% if page.extra.nav_prev %}
+        {% for p in projects_section.pages %}
+        {% if p.slug == page.extra.nav_prev %}
+        <a class="case-study__pager-link case-study__pager-link--prev" href="{{ p.permalink }}">
+            <span class="case-study__pager-icon" aria-hidden="true">←</span>
+            {{ p.title }}
+        </a>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+        <span></span>
+        {% endif %}
+
+        {% if page.extra.nav_next %}
+        {% for p in projects_section.pages %}
+        {% if p.slug == page.extra.nav_next %}
+        <a class="case-study__pager-link case-study__pager-link--next" href="{{ p.permalink }}">
+            {{ p.title }}
+            <span class="case-study__pager-icon" aria-hidden="true">→</span>
+        </a>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </nav>
+    {% endif %}
+</article>
+{% endblock content %}

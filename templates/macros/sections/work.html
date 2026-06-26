@@ -6,7 +6,9 @@
         {% if projects.pages %}
         <div class="work__grid">
             {% for page in projects.pages %}
+            {% if page.extra.featured | default(value=true) %}
             {% include "macros/components/project-card.html" %}
+            {% endif %}
             {% endfor %}
             {% include "macros/components/project-card-placeholder.html" %}
         </div>

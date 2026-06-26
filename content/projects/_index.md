@@ -2,7 +2,7 @@
 title = "Projects"
 sort_by = "date"
 template = "section.html"
-page_template = "page.html"
+page_template = "projects/single.html"
 +++
 
 Case studies and selected work.

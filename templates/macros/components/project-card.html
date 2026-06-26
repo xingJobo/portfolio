@@ -1,16 +1,23 @@
 <article class="project-card">
     <a class="project-card__link" href="{{ page.permalink }}">
         <div
-            class="project-card__media{% if page.extra.thumbnail %} project-card__media--{{ page.extra.thumbnail }}{% endif %}"
+            class="project-card__media{% if page.extra.thumbnail is defined %} project-card__media--{{ page.extra.thumbnail }}{% endif %}"
             aria-hidden="true"
         >
-            {% if page.extra.thumbnail == "inventory" %}
+            {% if page.extra.thumbnail is defined and page.extra.thumbnail == "inventory" %}
             <span class="project-card__media-bar project-card__media-bar--accent"></span>
             <span class="project-card__media-bar"></span>
             <span class="project-card__media-bar project-card__media-bar--wide"></span>
             <span class="project-card__media-orb"></span>
-            {% elif page.extra.thumbnail == "checklist" %}
+            {% elif page.extra.thumbnail is defined and page.extra.thumbnail == "checklist" %}
             <span class="project-card__media-check"></span>
+            {% elif page.extra.thumbnail is defined and page.extra.thumbnail == "migration" %}
+            <span class="project-card__media-block project-card__media-block--source"></span>
+            <span class="project-card__media-arrow" aria-hidden="true"></span>
+            <span class="project-card__media-services">
+                <span class="project-card__media-service"></span>
+                <span class="project-card__media-service"></span>
+            </span>
             {% endif %}
         </div>
         <div class="project-card__body">
@@ -18,7 +25,7 @@
             {% if page.description %}
             <p class="project-card__summary">{{ page.description }}</p>
             {% endif %}
-            {% if page.extra.tags %}
+            {% if page.extra.tags is defined %}
             <ul class="project-card__tags">
                 {% for tag in page.extra.tags %}
                 <li class="project-card__tag{% if loop.first %} project-card__tag--primary{% endif %}">{{ tag }}</li>
