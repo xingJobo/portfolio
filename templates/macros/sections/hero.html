@@ -5,8 +5,11 @@
             <p class="hero__subtitle">{{ section.extra.subtitle }}</p>
             {% endif %}
             <h1 class="hero__title">{{ section.extra.headline | default(value=section.title) }}</h1>
-            {% if section.extra.lead %}
-            <p class="hero__lead">{{ section.extra.lead }}</p>
+            {% if section.extra.lead_work %}
+            <p class="hero__lead">{{ section.extra.lead_work }}</p>
+            {% endif %}
+            {% if section.extra.lead_school %}
+            <p class="hero__lead">{{ section.extra.lead_school }}</p>
             {% endif %}
             <div class="hero__actions">
                 <a class="btn btn--primary" href="#work">{{ section.extra.cta_primary | default(value="View work") }}</a>

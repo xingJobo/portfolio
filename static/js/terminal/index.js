@@ -1,4 +1,5 @@
 // @ts-check
+/// <reference path="../global.d.ts" />
 
 import { completeLine } from "./completion.js";
 import { runCommand } from "./commands.js";

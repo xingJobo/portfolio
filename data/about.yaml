@@ -9,18 +9,20 @@ profile:
 
 bio:
   - |
-    I turn complex requirements into software teams can own. I care about the full
-    lifecycle: discovery, architecture, delivery, and the handoff that keeps
-    velocity high after launch.
+    I'm training as a software developer, learning in two places at once: at work
+    on real web projects, and at school through modules in backend, frontend,
+    databases, and agile delivery..
   - |
-    I'm a strong fit when you need someone who can lead technically without losing
-    sight of product outcomes — and who documents decisions so the next engineer
-    is not starting from zero.
+    At work I've built shop websites, an infoscreen, and a Python game for a
+    live exposition — mostly with Smarty, vanilla HTML & JS, and Python. At
+    school I've shipped a Wordle game in a Scrum team, wired up multi-app stacks
+    with Docker Compose, and worked with both SQL and NoSQL. I like to feel a sense of purpouse. 
+    Purpouse needs a clarity of thought and a sense of direction. I want people to enjoy my work. For customers aswell as for coworkers.
 
 pillars:
   - title: Clarity
-    text: Readable code, explicit contracts, honest estimates.
-  - title: Maintainability
-    text: Tests, observability, and patterns that scale with the team.
-  - title: Impact
-    text: Ship outcomes that matter to users and the business.
+    text: Readable code, tidy structure, honest estimates.
+  - title: Learning
+    text: Picking up new tools and applying them in practice.
+  - title: Delivery
+    text: Finishing a product that customers enjoy and future collaborators have an easier time to maintain.
