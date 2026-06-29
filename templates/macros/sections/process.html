@@ -2,13 +2,6 @@
 {% set about = load_data(path="data/about.yaml") %}
 <section id="process" class="section process">
     <div class="container process__inner">
-        {% if about.pillars %}
-        <p class="process__strip" aria-hidden="true">
-            {% for pillar in about.pillars %}
-            {{ pillar.title }}{% if not loop.last %} &middot; {% endif %}
-            {% endfor %}
-        </p>
-        {% endif %}
 
         <header class="process__header">
             <p class="process__eyebrow">Process</p>

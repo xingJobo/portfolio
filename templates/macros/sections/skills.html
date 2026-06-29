@@ -2,13 +2,6 @@
 {% set process = load_data(path="data/process.yaml") %}
 <section id="skills" class="section skills">
     <div class="container skills__inner">
-        {% if process.steps %}
-        <p class="skills__strip" aria-hidden="true">
-            {% for step in process.steps %}
-            {{ step.title }}{% if not loop.last %} &rarr; {% endif %}
-            {% endfor %}
-        </p>
-        {% endif %}
 
         <header class="skills__header">
             <p class="skills__eyebrow">Skills</p>

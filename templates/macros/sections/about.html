@@ -2,13 +2,6 @@
 {% set projects = get_section(path="projects/_index.md") %}
 <section id="about" class="section about">
     <div class="container about__inner">
-        {% if projects.pages %}
-        <p class="about__strip" aria-hidden="true">
-            {% for page in projects.pages %}
-            {{ page.title }}{% if not loop.last %} &middot; {% endif %}
-            {% endfor %}
-        </p>
-        {% endif %}
 
         <header class="about__header">
             <p class="about__eyebrow">About</p>
