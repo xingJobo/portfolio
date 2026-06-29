@@ -1,43 +1,43 @@
 # Process section — see docs/planning/portfolio-mockup-process.svg
 
 title: How I work
-lead: A simple rhythm that keeps stakeholders aligned and risk visible early.
+lead: A simple rhythm that I use in my daily life. Understand the task, take small steps, then check it if the DoD applies.
 
 steps:
   - number: "01"
-    title: Discover
-    summary: Understand goals, constraints, and success criteria.
+    title: Understand - Seeing the big picture
+    summary: Clarify what needs to be build, for whom and what "done" looks like.
     bullets:
-      - Stakeholder interviews
-      - Risk map + scope boundaries
-      - Written brief everyone signs off
+      - Read the brief and ask questions early
+      - Break the task into smaller packages
+      - Note down constraints (Deadline, Stack, who maintains it)
     theme: mint
 
   - number: "02"
     title: Build
-    summary: Ship iteratively with tests and clear documentation.
+    summary: Implement step by step, test as I move forward and keep the code easy to follow.
     bullets:
-      - Thin vertical slices
-      - CI from day one
-      - Demo cadence every 1–2 weeks
+      - Small increments. One feature at a time
+      - Verison control and regular commits
+      - Test the feature before moving on
     theme: cyan
 
   - number: "03"
-    title: Deliver
-    summary: Hand off stable systems and measurable outcomes.
+    title: Ship & Learn
+    summary: Finish a viable product, get feedback and document for the next person.
     bullets:
-      - Runbooks + on-call readiness
-      - Metrics tied to business goals
-      - Knowledge transfer sessions
+      - Demo & hand off to client
+      - Notes on setup, decisions made and errors encountered
+      - Demo & hand off to client
     theme: mint
 
 engagement:
-  label: "Typical engagement:"
+  label: "Typical flow:"
   phases:
-    - text: 2-week discovery
-      highlight: false
-    - text: iterative build
-      highlight: false
-    - text: production handoff
+    - text: understand the task
       highlight: true
-  footnote: Works for greenfield products, platform work, and team augmentation.
+    - text: build in steps
+      highlight: true
+    - text: demo & refine
+      highlight: true
+  footnote: Same pattern wether it is a Docker lab, Cooking a meal or building a website.
