@@ -3,6 +3,11 @@
 title: How I work
 lead: A simple rhythm that I use in my daily life. Understand the task, take small steps, then check it if the DoD applies.
 
+timeline:
+  label: Step-by-step
+  start: Start
+  end: Done
+
 steps:
   - number: "01"
     title: Understand - Seeing the big picture
