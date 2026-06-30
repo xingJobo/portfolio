@@ -25,7 +25,7 @@ function loadVfs() {
 }
 
 function bootMessage(vfs) {
-  return runCommand(vfs, "help").lines.join("\n");
+  return runCommand(vfs, "cat README.md").lines.join("\n");
 }
 
 /**

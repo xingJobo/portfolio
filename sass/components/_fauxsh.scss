@@ -18,9 +18,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
     overflow: hidden;
 
-    border: 1px solid $color-border;
-
-    box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.35);
+    border: 1px solid $color-border-strong;
 
     background: $color-terminal-bg;
 
@@ -32,7 +30,9 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
     cursor: text;
 
-    box-shadow:  0.1rem 0.1rem 0.5rem rgba(255, 255, 255, 0.7), -0.1rem -0.1rem 0.5rem rgba(255, 255, 255, 0.7);
+    box-shadow:
+        0 0.625rem 1.25rem rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba($color-accent, 0.08);
 
 
 
@@ -70,7 +70,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
     background: $color-terminal-chrome;
 
-    border-bottom: 1px solid $color-border;
+    border-bottom: 1px solid $color-border-strong;
 
 }
 
