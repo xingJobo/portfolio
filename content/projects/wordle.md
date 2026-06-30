@@ -1,33 +1,33 @@
 +++
 title = "Wordle (Scrum module)"
 date = 2025-02-01
-description = "A team-built Wordle game delivered in two sprints — playable MVP plus word management."
+description = "A Svelte Wordle game delivered in two sprints — epics, stories, DoD, then build and review."
 template = "projects/single.html"
 
 [extra]
 thumbnail = "inventory"
 role = "Scrum team member"
 duration = "2 sprints"
-tags = ["Scrum", "Team project", "MVP"]
+tags = ["Svelte", "Scrum", "JSON"]
 nav_next = "infoscreen"
 
 [[extra.glance]]
 label = "Sprints"
-value = "2"
+value = "2 + reviews"
 accent = true
 
 [[extra.glance]]
-label = "Delivery"
-value = "Working game"
+label = "Stack"
+value = "Svelte"
 accent = true
 
 [[extra.glance]]
-label = "Scope"
-value = "Play + word admin"
+label = "Data"
+value = "JSON word list"
 
 [[extra.glance]]
 label = "Focus"
-value = "Agile process"
+value = "Agile delivery"
 accent_secondary = true
 +++
 
@@ -35,36 +35,41 @@ accent_secondary = true
 
 ## Context
 
-During the **Scrum module** at school, our class was split into teams to deliver a product using agile ceremonies and time-boxed sprints. Our team chose to build a **Wordle-style game** — familiar rules, clear MVP, and room to grow the feature set across two sprints.
+During the **Scrum module** at school, our team built a **Wordle-style game** in **Svelte**. The module was as much about process as code: we had to work through agile planning before writing the app, then deliver in two time-boxed sprints with a **sprint review** after each one.
 
-## Goal
+## Before we coded
 
-Ship a **working game** first, then add tooling so words could be managed without touching code.
+We did not jump straight into implementation. The sequence was:
+
+1. **Epics** — large goals (playable game, word management)
+2. **User stories** — break epics into backlog items we could estimate and assign
+3. **Definition of Done (DoD)** — agree what “finished” means for a story
+4. **Architecture** — how the Svelte app is structured and how data flows
+
+Only after that did we start the two build sprints.
 
 ## Sprint breakdown
 
 **Sprint 1 — MVP**
 
-- Playable Wordle core: guess words, get feedback on letters, win/lose states
-- Agree on backlog, estimate tasks, and demo something playable at sprint review
+- Playable Wordle: guesses, letter feedback, win/lose
+- **Sprint review** with a demo of the working game
 
 **Sprint 2 — Word management**
 
-- **Add, edit, and delete** words in the dictionary used by the game
-- Polish, bug fixes, and a final review demo
+- **Add, edit, and delete** words in the dictionary
+- **Sprint review** with the admin features included
 
-Daily stand-ups, sprint planning, and retrospectives were part of the grade — the process mattered as much as the code.
+There was **no backend**. Words live in a **JSON file** the app reads and updates for the word list.
 
 ## What I learned
 
-This project was less about cutting-edge architecture and more about **working in a team under Scrum**:
+- Planning artifacts (epics, stories, DoD) make scope visible before you commit to a sprint
+- A clear MVP in sprint 1 leaves room for admin features in sprint 2
+- Sprint reviews force you to show something real, not just “almost done”
 
-- Breaking work into sprint-sized pieces
-- Agreeing on “done” for the MVP before adding admin features
-- Communicating blockers early and adjusting the backlog when estimates were off
-
-I contributed to implementation and testing like everyone on the team, while keeping our board and deliverables visible for each ceremony.
+I contributed to implementation and ceremonies like the rest of the team — stand-ups, planning, and both reviews.
 
 ## Result
 
-A playable Wordle clone with a small **word admin** layer, delivered across two sprints with documented sprint goals and demos. It was one of my first projects where **how we worked** was as important as **what we shipped**.
+A Svelte Wordle clone with JSON-backed word management, delivered across **two sprints** with **two sprint reviews**. Strong practice in Scrum delivery, not just syntax.

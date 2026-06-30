@@ -1,13 +1,13 @@
 +++
 title = "Infoscreen"
 date = 2024-11-01
-description = "A team-built office display for presence, weather, calendar events, and daily chores."
+description = "Team-built office dashboard on a Raspberry Pi — presence, weather, Outlook events, and chores."
 template = "projects/single.html"
 
 [extra]
 thumbnail = "checklist"
 role = "Team member"
-tags = ["HTML", "JavaScript", "Smarty", "Microsoft Graph"]
+tags = ["Smarty", "HTML", "JavaScript", "Microsoft Graph"]
 nav_prev = "wordle"
 nav_next = "swimrun-timer"
 +++
@@ -16,29 +16,29 @@ nav_next = "swimrun-timer"
 
 ## Context
 
-At work we needed a page that could run all day on a large screen in the office — not a typical website for browsing, but a **living dashboard** everyone could glance at. We built it as a **team project** during my apprenticeship.
+At work we needed a page that runs all day on a **large screen in the office** — a dashboard, not a site you browse. We built it as a **team project** during my apprenticeship and ran it on a **Raspberry Pi** connected to the display.
 
 ## What it shows
 
-The infoscreen pulls together information people used to check in different places:
-
 - **Presence** — who is in the office and who is away
-- **Weather** — current conditions and a short forecast
-- **Calendar** — upcoming events from Outlook, fetched via the **Microsoft Graph API**
-- **Chores** — who is assigned to which tasks for that day
+- **Weather** — current conditions and forecast
+- **Calendar** — upcoming events from Outlook via **Microsoft Graph**
+- **Chores** — who has which tasks that day
 
-The layout is designed for distance reading: clear typography, simple blocks, and content that refreshes so the screen stays useful without interaction.
+## Stack
 
-## How we built it
+**Smarty** templates, plain **HTML** and **JavaScript**, and server-side integration with external APIs (weather, Graph for calendar/events).
 
-We used the same stack as our other web work: **Smarty** templates, **vanilla HTML & JavaScript**, and server-side glue to call external APIs. Weather data comes from a forecast API; calendar data is loaded through Graph after authenticating against Microsoft 365.
-
-We split the work by area (layout, presence, weather, calendar, chores) and integrated each piece into one page that could be opened in full-screen mode on the display machine.
+Teams split by area: presence, weather, events, chores. We merged everything into one full-screen page for the Pi.
 
 ## My contribution
 
-I worked on the front end and parts of the integration — markup and styling for the dashboard sections, wiring data into the templates, and testing how the page looked on the actual screen (not just in a desktop browser). Working in a team meant regular check-ins, dividing tasks, and fitting my pieces into the whole.
+**Primary:** the **chores** section — layout, data, and keeping it readable on a wall-mounted screen.
+
+**Also:** helped the **events** and **weather** teams when they were blocked or needed an extra pair of hands.
+
+**Infrastructure:** **set up the Raspberry Pi** so it boots into the infoscreen and keeps the page running reliably on the physical display.
 
 ## Result
 
-A single URL the office can leave open on a monitor: presence, weather, events, and chores in one place. It replaced a mix of manual checks and made day-to-day coordination a bit easier for the team.
+One URL on a Pi behind the office monitor: presence, weather, Outlook events, and chores in a single glanceable view — with real hardware setup, not only browser testing on a laptop.

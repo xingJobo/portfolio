@@ -1,42 +1,42 @@
 +++
 title = "Swimrun timing app"
 date = 2025-05-01
-description = "Customer app to create races, time swimmers per lane, and track member progress over time."
+description = "Solo customer app — Angular and Slim PHP to time races per lane and track member progress."
 template = "projects/single.html"
 
 [extra]
 thumbnail = "migration"
-role = "Developer (apprenticeship)"
-tags = ["Python", "HTML", "JavaScript", "SQL"]
+role = "Solo developer"
+tags = ["Angular", "Slim PHP", "JavaScript"]
 nav_prev = "infoscreen"
 outcome_headline = "Live race timing"
-outcome_detail = "per swimmer and lane · member history and stats"
+outcome_detail = "per swimmer and lane · Server-Sent Events"
 
 [[extra.glance]]
-label = "Users"
-value = "Active members"
+label = "Scope"
+value = "Solo project"
 accent = true
 
 [[extra.glance]]
-label = "Races"
-value = "Create & manage"
+label = "Front end"
+value = "Angular"
 accent = true
 
 [[extra.glance]]
-label = "Timing"
-value = "Per lane"
+label = "Back end"
+value = "Slim PHP"
+
+[[extra.glance]]
+label = "Live sync"
+value = "SSE (EventSource)"
 accent_secondary = true
-
-[[extra.glance]]
-label = "History"
-value = "Runs & stats"
 +++
 
 <span id="case-study-writeup"></span>
 
 ## Context
 
-A customer needed a way to **time swimrun events** and keep results for their members — not a one-off spreadsheet, but an app coaches and participants could return to after each race.
+A customer needed an app to **time swimrun events** and keep results for their members. I built this **on my own** during my apprenticeship — front to back, from login flows to live timing at a race.
 
 ## What the app does
 
@@ -48,20 +48,25 @@ A customer needed a way to **time swimrun events** and keep results for their me
 
 **For organisers**
 
-- **Create races** and add members to them
+- **Create races** and add members
 - **Time each swimmer and lane** during a live race
-- Store results so they appear in member history and stats
+- Persist results for history and stats
 
-## How we approached it
+## Stack
 
-We started from the real workflow at an event: set up the race, assign people to lanes, start and record times, then publish results members can look up later. The UI had to work under pressure — few clicks, clear state for “race in progress” vs “finished”.
+- **Angular** — UI, race management, timing screens, member views
+- **Slim PHP** — API and persistence behind the app
 
-On the technical side we used our usual web stack (**Python** backend, **HTML & JavaScript** front end, **SQL** for persistence). Authentication gates member-only views; race management and timing flows are separate from the public-facing login path.
+## The timing challenge
+
+Accurate **live timing** was the hardest part. I was **not allowed to use WebSockets**, but the race view still had to stay in sync while times were recorded lane by lane.
+
+I used **Server-Sent Events (SSE)** instead: the Slim PHP backend streams updates over a long-lived HTTP connection, and the Angular client listens with the browser’s **`EventSource`** API. The server pushes timing and race state as events arrive — without the full duplex setup of WebSockets, but responsive enough for live use at an event.
 
 ## My contribution
 
-I worked on features across the stack: forms and pages for race setup, wiring the timing flow to the backend, and queries that feed the history and statistics views. A lot of the work was getting **data model and UI aligned** — a race has lanes, lanes have swimmers, times must attach to the right member and show up correctly in their profile later.
+Solo ownership end to end: data model, Slim PHP routes, Angular components, auth, race setup, timing flow, and the member history/statistics views. Getting **race → lane → swimmer → time** consistent in the database and on screen took most of the iteration.
 
 ## Result
 
-An app the customer can use to run events and give members a lasting record of their performances — replacing manual timing and scattered notes with one place for **live timing**, **results**, and **progress tracking**.
+A customer-facing app for live swimrun timing and long-term member records — live sync via **SSE** and **`EventSource`**, without WebSockets.
