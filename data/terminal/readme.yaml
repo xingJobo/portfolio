@@ -5,7 +5,7 @@ content: |
   This portfolio should grant you a peak into my work. My current journey in the field of information technology.
 
   The purpouse of this terminal is to present the portfolio in a familiar manner to developers.
-  
+
   Supported commands:
 
     ls          lists files in this directory
@@ -15,11 +15,9 @@ content: |
 
 
   Support utilities: 
-  
+
     Tab completes commands and filenames. 
     ↑ / ↓ browse history.
 
-  
+
   Happy browsing!
-
-

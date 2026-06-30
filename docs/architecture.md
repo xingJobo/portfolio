@@ -10,7 +10,7 @@ Task breakdown: parent repo `docs/planning/work_packages.md`.
 | SSG | [Zola](https://www.getzola.org/) 0.22.x | Build Markdown + templates → static HTML |
 | Templates | [Tera](https://keats.github.io/tera/docs/) | HTML layouts and macros |
 | Styles | SCSS in `sass/` | Compiled to CSS at build time (`compile_sass = true`) |
-| UI | Alpine.js | Scroll nav, mobile menu, hero terminal |
+| UI | Alpine.js + vanilla JS | Hero terminal (`fauxsh`); scroll spy (`scroll-nav.js`); mobile drawer planned |
 | Data | YAML in `data/` | Nav sections, skills — loaded via `load_data()` |
 | Lint (dev) | Stylelint, markdownlint, Prettier | `npm run lint` — not part of Zola build |
 | Deploy | GitHub Actions | `getzola/github-pages` → GitHub Pages |

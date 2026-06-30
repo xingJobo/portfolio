@@ -27,14 +27,12 @@ also_comfortable_with:
   - Git & GitHub
   - Python
 
-
 recent_tooling:
   label: Recent tooling
   lines:
     - Smarty, vanilla HTML & JS - Shop site and infoscreen at work
     - Docker Compose, SQL & NoSQL - School projects
     - Zola, Alpine.js, GitHub Actions - This portfolio
-
 
 frameworks_used:
   - Smarty

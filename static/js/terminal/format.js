@@ -108,10 +108,6 @@ function colorizeToken(token) {
     return `<span class="fauxsh__token fauxsh__token--path">${token}</span>`;
   }
 
-  if (/\.(md|yaml|yml|json|sh)$/i.test(token) || token.startsWith(".")) {
-    return `<span class="fauxsh__token fauxsh__token--accent">${token}</span>`;
-  }
-
   if (/^(ls|cat|help|clear|whoami|pwd)$/i.test(token)) {
     return `<span class="fauxsh__token fauxsh__token--cmd">${token}</span>`;
   }
