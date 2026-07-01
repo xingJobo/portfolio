@@ -1,0 +1,80 @@
+{# Fauxsh VFS markdown — derived at build time from the same data as page sections. #}
+
+{% macro about_md(section_extra, about) -%}
+# About
+
+**{{ section_extra.subtitle }}**
+
+{{ section_extra.headline }}
+
+{% if section_extra.lead_work -%}
+{{ section_extra.lead_work }}
+
+{% endif -%}
+{% if section_extra.lead_school -%}
+{{ section_extra.lead_school }}
+
+{% endif -%}
+{{ about.lead }}
+{%- endmacro %}
+
+{% macro experience_md(about) -%}
+# Experience
+
+{% for paragraph in about.bio -%}
+{{ paragraph | trim }}
+
+{% endfor -%}
+## What I value
+
+{% for pillar in about.pillars -%}
+### {{ pillar.title }}
+{{ pillar.text }}
+
+{% endfor -%}
+{%- endmacro %}
+
+{% macro skills_md(skills) -%}
+# {{ skills.title | default(value="Core stack") }}
+
+{% for skill in skills.bars -%}
+{{ skill.name }}: {{ skill.level }}%
+{% endfor -%}
+{% if skills.bars_footnote %}
+
+{{ skills.bars_footnote | trim }}
+{% endif -%}
+{% if skills.employer_signal %}
+
+## {{ skills.employer_signal.label }}
+
+{{ skills.employer_signal.text }}
+{% endif %}
+
+## Also comfortable with
+
+{% for tag in skills.also_comfortable_with -%}
+- {{ tag.name }} ({{ tag.category }})
+{% endfor -%}
+{% if skills.frameworks %}
+
+## Frameworks & stacks
+
+{% for tag in skills.frameworks -%}
+- {{ tag.name }} ({{ tag.category }})
+{% endfor -%}
+{% endif -%}
+{%- endmacro %}
+
+{% macro projects_md(projects) -%}
+# Selected projects
+
+{% for page in projects.pages -%}
+## {{ page.title }}
+{{ page.description }}
+{% if page.extra.tags -%}
+Stack: {{ page.extra.tags | join(sep=", ") }}
+{% endif %}
+
+{% endfor -%}
+{%- endmacro %}
