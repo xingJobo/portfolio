@@ -213,12 +213,12 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     background: $color-surface-chip;
 
     &--accent {
-        border-color: rgba($color-accent, 0.5);
+        border-color: rgba(var(--color-accent-rgb), 0.5);
         color: $color-accent;
     }
 
     &--cyan {
-        border-color: rgba($color-accent-secondary, 0.5);
+        border-color: rgba(var(--color-accent-secondary-rgb), 0.5);
         color: $color-accent-secondary;
     }
 }
@@ -254,7 +254,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
     padding: $spacing-lg;
     border: 1px solid $color-border;
     border-radius: 0.75rem;
-    background: linear-gradient(180deg, $color-surface-card-start 0%, #121a24 100%);
+    background: linear-gradient(180deg, $color-surface-card-start 0%, $color-case-study-card-end 100%);
     box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.35);
 }
 

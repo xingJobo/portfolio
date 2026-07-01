@@ -10,10 +10,10 @@
     border-radius: 0.75rem;
     background: linear-gradient(
         180deg,
-        rgba(#152535, 0.5) 0%,
-        rgba(#0f1c2a, 0.5) 100%
+        color-mix(in srgb, var(--color-contact-zone-start) 50%, transparent) 0%,
+        color-mix(in srgb, var(--color-contact-zone-end) 50%, transparent) 100%
     );
-    border: 1px solid rgba($color-border-strong, 0.7);
+    border: 1px solid rgba(var(--color-border-strong-rgb), 0.7);
 
     @media (min-width: 768px) {
         padding: $spacing-2xl $spacing-xl;
@@ -92,7 +92,7 @@
         color: $color-accent;
 
         &:hover {
-            color: lighten($color-accent, 8%);
+            color: $color-accent-hover;
         }
     }
 
@@ -100,7 +100,7 @@
         color: $color-accent-secondary;
 
         &:hover {
-            color: lighten($color-accent-secondary, 8%);
+            color: $color-accent-secondary-hover;
         }
     }
 
@@ -212,8 +212,8 @@
     margin: 0 0 $spacing-lg;
     padding: $spacing-md $spacing-lg;
     border-radius: 0.5rem;
-    border: 1px solid rgba($color-accent, 0.45);
-    background: rgba($color-accent, 0.1);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.45);
+    background: rgba(var(--color-accent-rgb), 0.1);
     font-size: 0.875rem;
     line-height: 1.5;
     color: $color-text-ghost;
@@ -255,9 +255,9 @@
     background: $color-surface-input;
 
     &:focus-visible {
-        outline: 2px solid rgba($color-accent, 0.65);
+        outline: 2px solid rgba(var(--color-accent-rgb), 0.65);
         outline-offset: 1px;
-        border-color: rgba($color-accent, 0.45);
+        border-color: rgba(var(--color-accent-rgb), 0.45);
     }
 
     &::placeholder {

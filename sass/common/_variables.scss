@@ -1,64 +1,63 @@
-// Design tokens — xingJobo personal portfolio
-// Palette from docs/planning/portfolio-mockup-concept.svg (+ case-study mockup)
+// Non-theme tokens + SCSS aliases to CSS custom properties (see _dark.scss / _light.scss)
 
-// Backgrounds
-$color-bg-deep: #0c0f14;
-$color-bg-base: #111820;
-$color-bg-deep-alt: #0a1218;
-$color-surface: #0a0e13;
-$color-surface-raised: #141a22;
-$color-surface-card-start: #1c2734;
-$color-surface-card-end: #161f2a;
-$color-surface-elevated: #161d27;
-$color-surface-input: #0d1218;
-$color-surface-chip: #1a2836;
-$color-surface-muted: #243040;
+// Colors — resolved at runtime via _themes.scss
+$color-bg-deep: var(--color-bg-deep);
+$color-bg-base: var(--color-bg-base);
+$color-bg-deep-alt: var(--color-bg-deep-alt);
+$color-surface: var(--color-surface);
+$color-surface-raised: var(--color-surface-raised);
+$color-surface-card-start: var(--color-surface-card-start);
+$color-surface-card-end: var(--color-surface-card-end);
+$color-surface-elevated: var(--color-surface-elevated);
+$color-surface-input: var(--color-surface-input);
+$color-surface-chip: var(--color-surface-chip);
+$color-surface-muted: var(--color-surface-muted);
 
-// Borders
-$color-border: #334153;
-$color-border-strong: #465c75;
-$color-border-muted: #44566b;
+$color-border: var(--color-border);
+$color-border-strong: var(--color-border-strong);
+$color-border-muted: var(--color-border-muted);
 
-// Accents (mint → cyan gradient in mockups)
-$color-accent: #2ee6a8;
-$color-accent-secondary: #1cb8e8;
-$color-text-on-accent: #0a1218;
+$color-accent: var(--color-accent);
+$color-accent-secondary: var(--color-accent-secondary);
+$color-text-on-accent: var(--color-text-on-accent);
+$color-accent-mid: var(--color-accent-mid);
+$color-accent-hover: var(--color-accent-hover);
+$color-accent-secondary-hover: var(--color-accent-secondary-hover);
 
-// Typography
-$color-text-primary: #f4f7fb;
-$color-text-secondary: #e8edf4;
-$color-text-body: #97a8bc;
-$color-text-muted: #74859a;
-$color-text-nav: #667a92;
-$color-text-subtle: #8a9cb2;
-// $color-text-label: #9aadc4;
-$color-text-label: #d9e0e7;
-$color-text-faint: #4a5d73;
-$color-text-ghost: #c5d2e0;
+$color-text-primary: var(--color-text-primary);
+$color-text-secondary: var(--color-text-secondary);
+$color-text-body: var(--color-text-body);
+$color-text-muted: var(--color-text-muted);
+$color-text-nav: var(--color-text-nav);
+$color-text-subtle: var(--color-text-subtle);
+$color-text-label: var(--color-text-label);
+$color-text-faint: var(--color-text-faint);
+$color-text-ghost: var(--color-text-ghost);
 
-// Legacy aliases (used across partials)
-$color-text: $color-text-primary;
-$color-page: $color-bg-base;
-$color-panel: $color-surface-card-start;
+$color-text: var(--color-text);
+$color-page: var(--color-page);
+$color-panel: var(--color-panel);
 
-// Terminal (portfolio-mockup-concept.svg)
-$color-terminal-bg: #0d1218;
-$color-terminal-chrome: #161d27;
-$color-terminal-cmd: #6b7d94;
-$color-terminal-text: #e8edf4;
-$color-terminal-accent: #2ee6a8;
-$color-terminal-path: #1cb8e8;
-$color-terminal-error: #f38ba8;
+$color-terminal-bg: var(--color-terminal-bg);
+$color-terminal-chrome: var(--color-terminal-chrome);
+$color-terminal-cmd: var(--color-terminal-cmd);
+$color-terminal-text: var(--color-terminal-text);
+$color-terminal-accent: var(--color-terminal-accent);
+$color-terminal-path: var(--color-terminal-path);
+$color-terminal-error: var(--color-terminal-error);
+$color-terminal-close: var(--color-terminal-close);
+$color-terminal-minimize: var(--color-terminal-minimize);
+$color-terminal-maximize: var(--color-terminal-maximize);
 
-// Terminal chrome (macOS-style dots in mockups)
-$color-terminal-close: #ff5f57;
-$color-terminal-minimize: #febc2e;
-$color-terminal-maximize: #28c840;
+$color-card-media-1: var(--color-card-media-1);
+$color-card-media-2: var(--color-card-media-2);
+$color-card-media-3: var(--color-card-media-3);
 
-// Project card media blocks (mockup variants)
-$color-card-media-1: #1e2d3d;
-$color-card-media-2: #1a2635;
-$color-card-media-3: #1c2430;
+$color-contact-zone-start: var(--color-contact-zone-start);
+$color-contact-zone-end: var(--color-contact-zone-end);
+$color-grid-line: var(--color-grid-line);
+$color-surface-inset-highlight: var(--color-surface-inset-highlight);
+$color-case-study-card-end: var(--color-case-study-card-end);
 
 $font-family-base: system-ui, -apple-system, "Segoe UI", roboto, sans-serif;
 

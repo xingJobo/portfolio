@@ -1,5 +1,15 @@
 <meta charset="utf-8">
 <script>document.documentElement.classList.replace("no-js", "js");</script>
+<script>
+    (function () {
+        try {
+            var theme = localStorage.getItem("theme");
+            if (theme === "light" || theme === "dark") {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        } catch (e) {}
+    })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page %}{% if page.title %}{{ page.title }} · {% endif %}{% endif %}{{ config.title }}</title>
 {% if page and page.description %}

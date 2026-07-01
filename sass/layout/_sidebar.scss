@@ -66,7 +66,7 @@
             width: 0.625rem;
             height: 0.625rem;
             @include accent-gradient;
-            box-shadow: 0 0 0.5rem rgba($color-accent, 0.35);
+            box-shadow: 0 0 0.5rem rgba(var(--color-accent-rgb), 0.35);
         }
 
         .scroll-nav__label {

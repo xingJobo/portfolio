@@ -107,9 +107,9 @@
 .skills__signal-card {
     padding: $spacing-md $spacing-lg;
     border-radius: 0.625rem;
-    background: rgba($color-surface-card-start, 0.8);
+    background: rgba(var(--color-surface-card-start-rgb), 0.8);
     border: 1px solid $color-border-strong;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 1px 0 $color-surface-inset-highlight;
 }
 
 .skills__signal-label {
@@ -135,7 +135,7 @@
     border: 1px solid $color-border-strong;
     box-shadow:
         0 0.5rem 1rem rgba(0, 0, 0, 0.38),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        inset 0 1px 0 $color-surface-inset-highlight;
 }
 
 .skills__comfort-title {
@@ -186,7 +186,7 @@
     }
 
     &--devops::before {
-        background: mix($color-accent-secondary, $color-accent, 50%);
+        background: $color-accent-mid;
     }
 
     &--platform::before {
@@ -231,26 +231,26 @@
 
     &--language {
         color: $color-accent;
-        border-color: rgba($color-accent, 0.35);
-        background: rgba($color-accent, 0.08);
+        border-color: rgba(var(--color-accent-rgb), 0.35);
+        background: rgba(var(--color-accent-rgb), 0.08);
     }
 
     &--frontend {
         color: $color-accent-secondary;
-        border-color: rgba($color-accent-secondary, 0.35);
-        background: rgba($color-accent-secondary, 0.08);
+        border-color: rgba(var(--color-accent-secondary-rgb), 0.35);
+        background: rgba(var(--color-accent-secondary-rgb), 0.08);
     }
 
     &--backend {
         color: $color-text-ghost;
-        border-color: rgba($color-text-ghost, 0.35);
-        background: rgba($color-surface-muted, 0.5);
+        border-color: rgba(var(--color-text-ghost-rgb), 0.35);
+        background: rgba(var(--color-surface-muted-rgb), 0.5);
     }
 
     &--devops {
-        color: mix($color-accent-secondary, $color-accent, 40%);
-        border-color: rgba($color-accent, 0.28);
-        background: rgba($color-accent, 0.06);
+        color: $color-accent-mid;
+        border-color: rgba(var(--color-accent-rgb), 0.28);
+        background: rgba(var(--color-accent-rgb), 0.06);
     }
 
     &--platform {
@@ -261,11 +261,11 @@
 
     &--framework {
         color: $color-text-primary;
-        border-color: rgba($color-accent, 0.4);
+        border-color: rgba(var(--color-accent-rgb), 0.4);
         background: linear-gradient(
             135deg,
-            rgba($color-accent, 0.12),
-            rgba($color-accent-secondary, 0.1)
+            rgba(var(--color-accent-rgb), 0.12),
+            rgba(var(--color-accent-secondary-rgb), 0.1)
         );
     }
 }

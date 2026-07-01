@@ -1,0 +1,9 @@
+// Fallback theme tokens on :root (dark = site default).
+// _themes.scss overrides for light / explicit data-theme after this loads.
+
+@use "dark";
+
+:root {
+    color-scheme: dark;
+    @include dark.tokens;
+}

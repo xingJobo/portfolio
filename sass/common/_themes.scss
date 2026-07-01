@@ -1,0 +1,21 @@
+// Theme overrides — fallbacks live in _init.scss (dark on :root).
+
+@use "dark";
+@use "light";
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    @include dark.tokens;
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+    @include light.tokens;
+}
+
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+        color-scheme: light;
+        @include light.tokens;
+    }
+}

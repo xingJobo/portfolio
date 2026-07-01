@@ -1,11 +1,14 @@
 // xingJobo portfolio — single CSS entry (compiled to /main.css by Zola)
 
+@use "common/init";
+@use "common/themes";
 @use "common/variables";
 @use "common/mixins";
 @use "common/fonts";
 @use "common/global";
 @use "layout/header";
 @use "layout/sidebar";
+@use "components/theme-toggle";
 @use "layout/footer";
 @use "layout/pages";
 @use "components/buttons";

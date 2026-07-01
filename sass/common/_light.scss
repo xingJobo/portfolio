@@ -1,0 +1,77 @@
+// Light theme tokens — same structure as _dark.scss
+
+@mixin tokens {
+    // Backgrounds
+    --color-bg-deep: #eef1f5;
+    --color-bg-base: #e4e9ef;
+    --color-bg-deep-alt: #f5f7fa;
+    --color-surface: #ffffff;
+    --color-surface-raised: #f8fafc;
+    --color-surface-card-start: #ffffff;
+    --color-surface-card-end: #f1f5f9;
+    --color-surface-elevated: #f1f5f9;
+    --color-surface-input: #ffffff;
+    --color-surface-chip: #e8eef4;
+    --color-surface-muted: #dce4ec;
+
+    // Borders
+    --color-border: #c5d0dc;
+    --color-border-strong: #94a3b8;
+    --color-border-muted: #b8c4d0;
+
+    // Accents (slightly deeper for contrast on light surfaces)
+    --color-accent: #15996a;
+    --color-accent-secondary: #0a7fa8;
+    --color-text-on-accent: #f8fffc;
+    --color-accent-rgb: 21, 153, 106;
+    --color-accent-secondary-rgb: 10, 127, 168;
+    --color-accent-mid: #128a85;
+
+    // Typography
+    --color-text-primary: #1a2332;
+    --color-text-secondary: #2d3a4d;
+    --color-text-body: #4a5d73;
+    --color-text-muted: #64748b;
+    --color-text-nav: #64748b;
+    --color-text-subtle: #526179;
+    --color-text-label: #334155;
+    --color-text-faint: #94a3b8;
+    --color-text-ghost: #475569;
+    --color-text-primary-rgb: 26, 35, 50;
+    --color-text-ghost-rgb: 71, 85, 105;
+    --color-surface-card-start-rgb: 255, 255, 255;
+    --color-border-strong-rgb: 148, 163, 184;
+    --color-surface-muted-rgb: 220, 228, 236;
+
+    // Legacy aliases
+    --color-text: var(--color-text-primary);
+    --color-page: var(--color-bg-base);
+    --color-panel: var(--color-surface-card-start);
+
+    // Terminal (keep dark chrome on light pages)
+    --color-terminal-bg: #0d1218;
+    --color-terminal-chrome: #161d27;
+    --color-terminal-cmd: #6b7d94;
+    --color-terminal-text: #e8edf4;
+    --color-terminal-accent: #2ee6a8;
+    --color-terminal-path: #1cb8e8;
+    --color-terminal-error: #f38ba8;
+    --color-terminal-accent-rgb: 46, 230, 168;
+    --color-terminal-close: #ff5f57;
+    --color-terminal-minimize: #febc2e;
+    --color-terminal-maximize: #28c840;
+
+    // Project card media
+    --color-card-media-1: #d4e2ef;
+    --color-card-media-2: #cdd9e8;
+    --color-card-media-3: #d0dce8;
+
+    // Section / effects
+    --color-contact-zone-start: #d8e4f0;
+    --color-contact-zone-end: #cdd9e8;
+    --color-grid-line: rgba(0, 0, 0, 0.04);
+    --color-surface-inset-highlight: rgba(255, 255, 255, 0.65);
+    --color-case-study-card-end: #e8eef4;
+    --color-accent-hover: #128f5f;
+    --color-accent-secondary-hover: #087194;
+}

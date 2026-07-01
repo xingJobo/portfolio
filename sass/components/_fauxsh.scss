@@ -33,7 +33,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
     box-shadow:
         0 0.625rem 1.25rem rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba($color-accent, 0.08);
+        0 0 0 1px rgba(var(--color-accent-rgb), 0.08);
 
     // Animation for opening and closing the terminal — expand from vertical center.
     transform: scaleY(0);
@@ -63,7 +63,7 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
     &:focus-visible {
 
-        outline: 2px solid rgba($color-terminal-accent, 0.85);
+        outline: 2px solid rgba(var(--color-terminal-accent-rgb), 0.85);
 
         outline-offset: 2px;
 

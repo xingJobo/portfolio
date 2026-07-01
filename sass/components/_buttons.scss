@@ -42,9 +42,9 @@
 }
 
 .btn--terminal {
-    border-color: rgba($color-terminal-accent, 0.55);
+    border-color: rgba(var(--color-terminal-accent-rgb), 0.55);
     color: $color-terminal-accent;
-    background: rgba($color-terminal-accent, 0.08);
+    background: rgba(var(--color-terminal-accent-rgb), 0.08);
     font-family: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, consolas, monospace;
     font-size: 0.875rem;
     letter-spacing: 0.02em;
@@ -54,12 +54,12 @@
     &:focus-visible {
         border-color: $color-terminal-accent;
         color: $color-terminal-text;
-        background: rgba($color-terminal-accent, 0.16);
+        background: rgba(var(--color-terminal-accent-rgb), 0.16);
     }
 
     &[aria-expanded="true"] {
         border-color: $color-terminal-accent;
         color: $color-terminal-text;
-        background: rgba($color-terminal-accent, 0.2);
+        background: rgba(var(--color-terminal-accent-rgb), 0.2);
     }
 }
