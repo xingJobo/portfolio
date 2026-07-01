@@ -10,20 +10,6 @@ employer_signal:
   label: Where I'm strongest
   text: Web interfaces and small full-stack pieces.
 
-tag_categories:
-  language:
-    label: Languages
-  frontend:
-    label: Frontend
-  backend:
-    label: Backend & data
-  devops:
-    label: DevOps & tooling
-  platform:
-    label: Cloud & platforms
-  framework:
-    label: Frameworks
-
 bars:
   - name: Backend (SQL & NoSQL)
     level: 70
@@ -33,20 +19,12 @@ bars:
     level: 45
 
 also_comfortable_with:
-  - name: HTML & CSS
-    category: frontend
-  - name: Smarty
-    category: frontend
   - name: TypeScript
     category: language
-  - name: Docker
-    category: devops
   - name: PostgreSQL
     category: backend
   - name: AWS
     category: platform
-  - name: Git & GitHub
-    category: devops
   - name: Python
     category: language
 

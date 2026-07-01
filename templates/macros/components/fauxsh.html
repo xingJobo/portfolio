@@ -22,7 +22,7 @@
             class="fauxsh__output fauxsh__output--preview"
             x-show="!vfsReady && !vfsLoading"
             aria-hidden="true"
-        >{% include "macros/components/fauxsh-fallback.html" %}</pre>
+        >{{ fauxsh_fallback::render() }}</pre>
         <p
             class="fauxsh__output fauxsh__output--loading"
             x-show="vfsLoading"

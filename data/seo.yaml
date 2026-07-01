@@ -1,7 +1,7 @@
 # SEO metadata — consumed by templates/macros/shell/head.html
+# jobTitle comes from data/about.yaml hero.subtitle (single source of truth)
 
 person:
-  job_title: Software developer in training
   same_as:
     - https://github.com/xingJobo
 

@@ -1,4 +1,3 @@
-{% set about = load_data(path="data/about.yaml") %}
 <section id="about" class="section about">
     <div class="container about__inner">
 
@@ -6,7 +5,7 @@
             <p class="about__eyebrow">About</p>
             <h2 class="about__title">About</h2>
             <p class="about__lead">
-                {{ about.lead | default(value="Building reliable software with a focus on clarity, maintainability, and user impact.") }}
+                {{ about.intro | default(value="Building reliable software with a focus on clarity, maintainability, and user impact.") }}
             </p>
         </header>
 

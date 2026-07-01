@@ -1,0 +1,17 @@
+{# Project stack tags: supports [extra.tags] as strings or { name, accent } objects #}
+
+{% macro text(item) -%}
+{%- if item is string -%}
+{{ item }}
+{%- else -%}
+{{ item.name }}
+{%- endif -%}
+{%- endmacro %}
+
+{% macro has_accent(item) -%}
+{%- if item is not string and item.accent -%}true{%- endif -%}
+{%- endmacro %}
+
+{% macro has_accent_secondary(item) -%}
+{%- if item is not string and item.accent_secondary -%}true{%- endif -%}
+{%- endmacro %}

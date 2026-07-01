@@ -56,11 +56,11 @@
         <aside class="process__engagement">
             <p class="process__engagement-label">{{ process.engagement.label }}</p>
             <p class="process__engagement-flow">
-                {% for phase in process.engagement.phases %}
+                {% for step in process.steps %}
                 {% if not loop.first %}
                 <span class="process__engagement-arrow" aria-hidden="true">&rarr;</span>
                 {% endif %}
-                <span class="process__engagement-phase{% if phase.highlight %} process__engagement-phase--highlight{% endif %}">{{ phase.text }}</span>
+                <span class="process__engagement-phase process__engagement-phase--highlight">{{ step.flow }}</span>
                 {% endfor %}
             </p>
             {% if process.engagement.footnote %}

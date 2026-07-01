@@ -12,6 +12,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% set seo = load_data(path="data/seo.yaml") %}
+{% set about = load_data(path="data/about.yaml") %}
 {% if page and page.title %}
 {% set seo_title = page.title ~ " · " ~ config.title %}
 {% else %}
@@ -61,5 +62,5 @@
 {% if seo_description %}
 <meta name="twitter:description" content="{{ seo_description | escape }}">
 {% endif %}
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":{{ config.title | json_encode | safe }},"url":{{ site_url | json_encode | safe }},"jobTitle":{{ seo.person.job_title | json_encode | safe }},"sameAs":{{ seo.person.same_as | json_encode | safe }}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":{{ config.title | json_encode | safe }},"url":{{ site_url | json_encode | safe }},"jobTitle":{{ about.hero.subtitle | json_encode | safe }},"sameAs":{{ seo.person.same_as | json_encode | safe }}}</script>
 <link rel="stylesheet" href="{{ get_url(path='main.css') | safe }}">

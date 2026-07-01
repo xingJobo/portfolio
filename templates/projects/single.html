@@ -1,7 +1,7 @@
 {% extends "base.html" %}
+{% import "macros/components/project-tag.html" as project_tag %}
 
 {% block content %}
-{% set projects_section = get_section(path="projects/_index.md") %}
 <article class="case-study">
     <div class="container case-study__intro">
         <div class="case-study__toolbar">
@@ -33,8 +33,8 @@
                 <li class="case-study__meta-item">{{ page.extra.duration }}</li>
                 {% endif %}
                 {% if page.extra.tags %}
-                {% for tag in page.extra.tags %}
-                <li class="case-study__meta-item{% if page.extra.highlight_tags and tag == page.extra.highlight_tags[0] %} case-study__meta-item--accent{% elif page.extra.highlight_tags and page.extra.highlight_tags | length > 1 and tag == page.extra.highlight_tags[1] %} case-study__meta-item--cyan{% elif loop.index0 == 0 and not page.extra.highlight_tags %} case-study__meta-item--accent{% endif %}">{{ tag }}</li>
+                {% for item in page.extra.tags %}
+                <li class="case-study__meta-item{% if project_tag::has_accent(item=item) %} case-study__meta-item--accent{% elif project_tag::has_accent_secondary(item=item) %} case-study__meta-item--cyan{% endif %}">{{ project_tag::text(item=item) }}</li>
                 {% endfor %}
                 {% endif %}
             </ul>
@@ -87,34 +87,20 @@
         </div>
     </div>
 
-    {% set_global pager_prev = false %}
-    {% set_global pager_next = false %}
-    {% set_global pager_seen = false %}
-    {% for p in projects_section.pages %}
-        {% if pager_seen and not pager_next %}
-            {% set_global pager_next = p %}
-        {% endif %}
-        {% if p.slug == page.slug %}
-            {% set_global pager_seen = true %}
-        {% elif not pager_seen %}
-            {% set_global pager_prev = p %}
-        {% endif %}
-    {% endfor %}
-
-    {% if pager_prev or pager_next %}
+    {% if page.lower or page.higher %}
     <nav class="case-study__pager container" aria-label="Other case studies">
-        {% if pager_prev %}
-        <a class="case-study__pager-link case-study__pager-link--prev" href="{{ pager_prev.permalink }}">
+        {% if page.lower %}
+        <a class="case-study__pager-link case-study__pager-link--prev" href="{{ page.lower.permalink }}">
             <span class="case-study__pager-icon" aria-hidden="true">←</span>
-            {{ pager_prev.title }}
+            {{ page.lower.title }}
         </a>
         {% else %}
         <span></span>
         {% endif %}
 
-        {% if pager_next %}
-        <a class="case-study__pager-link case-study__pager-link--next" href="{{ pager_next.permalink }}">
-            {{ pager_next.title }}
+        {% if page.higher %}
+        <a class="case-study__pager-link case-study__pager-link--next" href="{{ page.higher.permalink }}">
+            {{ page.higher.title }}
             <span class="case-study__pager-icon" aria-hidden="true">→</span>
         </a>
         {% endif %}

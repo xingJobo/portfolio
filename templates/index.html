@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% import "macros/terminal/vfs-markdown.html" as vfs_md %}
-{% import "macros/terminal/fauxsh-static.html" as fauxsh_static %}
+{% import "macros/components/fauxsh-fallback.html" as fauxsh_fallback %}
 
 {% block sidebar %}
 <aside class="sidebar" aria-label="Section navigation">
@@ -9,6 +8,7 @@
 {% endblock sidebar %}
 
 {% block content %}
+{% set about = load_data(path="data/about.yaml") %}
 {% include "macros/sections/hero.html" %}
 {% include "macros/sections/work.html" %}
 {% include "macros/sections/about.html" %}
@@ -20,13 +20,8 @@
 {% block scripts %}
 {{ super() }}
 <script type="module" src="{{ get_url(path='js/terminal/index.js') | safe }}"></script>
+<script type="module" src="{{ get_url(path='js/terminal/fallback-guard.js') | safe }}"></script>
 <script type="module" src="{{ get_url(path='js/scroll-nav.js') | safe }}"></script>
+<script type="module" src="{{ get_url(path='js/contact.js') | safe }}"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
-<script>
-    window.setTimeout(function () {
-        document.querySelectorAll(".fauxsh.fauxsh--activating:not(.fauxsh--ready)").forEach(function (el) {
-            el.classList.add("fauxsh--fallback");
-        });
-    }, 10000);
-</script>
 {% endblock scripts %}

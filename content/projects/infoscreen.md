@@ -7,7 +7,20 @@ template = "projects/single.html"
 [extra]
 thumbnail = "checklist"
 role = "Team member"
-tags = ["Smarty", "HTML", "JavaScript", "Microsoft Graph"]
+
+[[extra.tags]]
+name = "Smarty"
+accent = true
+
+[[extra.tags]]
+name = "HTML"
+
+[[extra.tags]]
+name = "JavaScript"
+
+[[extra.tags]]
+name = "Microsoft Graph"
+accent_secondary = true
 +++
 
 <span id="case-study-writeup"></span>

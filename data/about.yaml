@@ -4,14 +4,14 @@
 hero:
   subtitle: Software developer in training
   headline: Web development that ships
-  lead_work: "Work experience: Smarty templates, vanilla HTML & JS, Python apps, and sites for a real shop."
-  lead_school: "School experience: Projects in containers, databases, and agile delivery."
+  lead_work: "Work: Smarty templates, vanilla HTML & JS, Python apps, and shop sites."
+  lead_school: "School: Docker labs, databases, and agile delivery in Scrum teams."
   cta_primary: View work
   cta_secondary: Get in touch
   terminal_cta_label: Interactive terminal
   terminal_cta_lead: For developers who prefer the terminal to discover information.
 
-lead: Apprentice developer with a mix of production web work and structured training. Focused on clear code and practical delivery.
+intro: Focused on clear code and practical delivery.
 
 profile:
   initials: "XJ"
@@ -20,15 +20,12 @@ profile:
 
 bio:
   - |
-    I'm training as a software developer, learning in two places at once: at work
-    on real web projects, and at school through modules in backend, frontend,
-    databases, and agile delivery.
+    At work I've built shop websites, an office infoscreen, and a Python game for a
+    live exposition. At school I've shipped a Wordle game in a Scrum team, wired
+    multi-app stacks with Docker Compose, and worked with both SQL and NoSQL.
   - |
-    At work I've built shop websites, an infoscreen, and a Python game for a
-    live exposition — mostly with Smarty, vanilla HTML & JS, and Python. At
-    school I've shipped a Wordle game in a Scrum team, wired up multi-app stacks
-    with Docker Compose, and worked with both SQL and NoSQL. I like to feel a sense of purpose.
-    Purpose needs a clarity of thought and a sense of direction. I want people to enjoy my work. For customers as well as for coworkers.
+    I care that work feels purposeful — clear direction, readable code, and
+    results people actually enjoy using.
 
 pillars:
   - title: Clarity

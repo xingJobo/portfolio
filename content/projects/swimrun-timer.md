@@ -7,7 +7,18 @@ template = "projects/single.html"
 [extra]
 thumbnail = "migration"
 role = "Solo developer"
-tags = ["Angular", "Slim PHP", "JavaScript"]
+
+[[extra.tags]]
+name = "Angular"
+accent = true
+
+[[extra.tags]]
+name = "Slim PHP"
+
+[[extra.tags]]
+name = "JavaScript"
+accent_secondary = true
+
 outcome_headline = "Live race timing"
 outcome_detail = "per swimmer and lane · Server-Sent Events"
 

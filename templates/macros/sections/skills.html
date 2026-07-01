@@ -44,13 +44,6 @@
 
             <aside class="skills__comfort-card">
                 <h3 class="skills__comfort-title">Also comfortable with</h3>
-                {% if skills.tag_categories %}
-                <!-- <ul class="skills__legend" aria-label="Skill tag categories">
-                    {% for key, cat in skills.tag_categories %}
-                    <li class="skills__legend-item skills__legend-item--{{ key }}">{{ cat.label }}</li>
-                    {% endfor %}
-                </ul> -->
-                {% endif %}
                 <ul class="skills__tags">
                     {% for tag in skills.also_comfortable_with %}
                     <li class="skills__tag skills__tag--{{ tag.category | default(value="tool") }}">{{ tag.name }}</li>

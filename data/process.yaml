@@ -1,7 +1,7 @@
 # Process section — see docs/planning/portfolio-mockup-process.svg
 
 title: How I work
-lead: A simple rhythm that I use in my daily life. Understand the task, take small steps, then check it if the DoD applies.
+lead: A simple rhythm I use daily — understand the task, build in small steps, then ship and learn.
 
 timeline:
   label: Step-by-step
@@ -10,38 +10,34 @@ timeline:
 
 steps:
   - number: "01"
-    title: Understand - Seeing the big picture
-    summary: Clarify what needs to be built, for whom and what "done" looks like.
+    flow: understand the task
+    title: Understand
+    summary: Clarify what needs to be built, for whom, and what "done" looks like.
     bullets:
       - Read the brief and ask questions early
       - Break the task into smaller packages
-      - Note down constraints (Deadline, Stack, who maintains it)
+      - Note constraints (deadline, stack, who maintains it)
     theme: mint
 
   - number: "02"
+    flow: build in steps
     title: Build
-    summary: Implement step by step, test as I move forward and keep the code easy to follow.
+    summary: Implement step by step, test as I go, and keep the code easy to follow.
     bullets:
-      - Small increments. One feature at a time
+      - Small increments — one feature at a time
       - Version control and regular commits
-      - Test the feature before moving on
+      - Test before moving on
     theme: cyan
 
   - number: "03"
+    flow: demo & refine
     title: Ship & Learn
-    summary: Finish a viable product, get feedback and document for the next person.
+    summary: Finish a viable product, get feedback, and document for the next person.
     bullets:
-      - Demo & hand off to client
-      - Notes on setup, decisions made and errors encountered
+      - Demo and hand off to the client
+      - Notes on setup, decisions, and errors encountered
     theme: mint
 
 engagement:
   label: "Typical flow:"
-  phases:
-    - text: understand the task
-      highlight: true
-    - text: build in steps
-      highlight: true
-    - text: demo & refine
-      highlight: true
-  footnote: Same pattern whether it is a Docker lab, Cooking a meal or building a website.
+  footnote: Same pattern whether it's a Docker lab, cooking a meal, or building a website.

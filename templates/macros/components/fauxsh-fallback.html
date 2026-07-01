@@ -1,4 +1,9 @@
-{# Static terminal session when JS is off or fails to load — same README text as #terminal-fs #}
+{# Static terminal session when JS is off or fails to load — same README text as VFS #}
+{% import "macros/terminal/vfs-markdown.html" as vfs_md %}
+{% import "macros/terminal/fauxsh-static.html" as fauxsh_static %}
+{% import "macros/terminal/vfs-payload.html" as vfs_payload %}
+
+{% macro render() %}
 {% set readme = load_data(path="data/terminal/readme.yaml") %}
 {% set readme_display = vfs_md::readme_vfs_content(readme=readme) %}
 
@@ -9,5 +14,6 @@
 {% endif %}
 {% endfor %}
 {{ fauxsh_static::prompt(command="ls") }}
-<span class="fauxsh__line fauxsh__line--text">about.md  experience.md  projects.md  README.md  skills.md</span>
+<span class="fauxsh__line fauxsh__line--text">{{ vfs_payload::ls_line() }}</span>
 <span class="fauxsh__line fauxsh__line--cmd"><span class="fauxsh__prompt-user">xingjobo@portfolio</span><span class="fauxsh__prompt-path">:~</span><span class="fauxsh__prompt-mark">$ </span><span class="fauxsh__block-cursor fauxsh__block-cursor--on"></span></span>
+{% endmacro render %}

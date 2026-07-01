@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  {% set nav = load_data(path="data/nav.yaml") %}
   <a class="skip-link" href="#main">Skip to content</a>
   {% include "macros/shell/mobile-nav.html" %}
   <div class="site">

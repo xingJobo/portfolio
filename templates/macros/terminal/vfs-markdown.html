@@ -1,4 +1,5 @@
 {# Fauxsh VFS markdown — derived at build time from the same data as page sections. #}
+{% import "macros/components/project-tag.html" as project_tag %}
 
 {% macro about_md(about) -%}
 # About
@@ -15,7 +16,9 @@
 {{ about.hero.lead_school }}
 
 {% endif -%}
-{{ about.lead }}
+{% if about.intro -%}
+{{ about.intro }}
+{% endif -%}
 {%- endmacro %}
 
 {% macro experience_md(about) -%}
@@ -73,16 +76,12 @@
 ## {{ page.title }}
 {{ page.description }}
 {% if page.extra.tags -%}
-Stack: {{ page.extra.tags | join(sep=", ") }}
+Stack: {% for item in page.extra.tags %}{{ project_tag::text(item=item) }}{% if not loop.last %}, {% endif %}{% endfor %}
 {% endif %}
 
 {% endfor -%}
 {%- endmacro %}
 
 {% macro readme_vfs_content(readme) -%}
-{%- if readme.boot_hint -%}
-{{ readme.content ~ "\n\n" ~ readme.boot_hint }}
-{%- else -%}
 {{ readme.content }}
-{%- endif -%}
 {%- endmacro %}

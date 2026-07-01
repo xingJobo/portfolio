@@ -1,7 +1,7 @@
 # Welcome text for README.md in fauxsh (see docs/architecture.md).
 
 content: |
-  Welcome dear visitor 
+  Welcome dear visitor
   This portfolio should grant you a peek into my work. My current journey in the field of information technology.
 
   The purpose of this terminal is to present the portfolio in a familiar manner to developers.
@@ -13,11 +13,11 @@ content: |
     help        lists all commands
     clear       clear the screen
 
+  Support utilities:
 
-  Support utilities: 
-
-    Tab completes commands and filenames. 
+    Tab completes commands and filenames.
     ↑ / ↓ browse history.
 
-
   Happy browsing!
+
+  Try: ls — cat about.md — help

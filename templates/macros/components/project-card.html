@@ -27,8 +27,8 @@
             {% endif %}
             {% if page.extra.tags is defined %}
             <ul class="project-card__tags">
-                {% for tag in page.extra.tags %}
-                <li class="project-card__tag{% if loop.first %} project-card__tag--primary{% endif %}">{{ tag }}</li>
+                {% for item in page.extra.tags %}
+                <li class="project-card__tag{% if item is not string and item.accent %} project-card__tag--primary{% endif %}">{% if item is string %}{{ item }}{% else %}{{ item.name }}{% endif %}</li>
                 {% endfor %}
             </ul>
             {% endif %}

@@ -8,7 +8,17 @@ template = "projects/single.html"
 thumbnail = "inventory"
 role = "Scrum team member"
 duration = "2 sprints"
-tags = ["Svelte", "Scrum", "JSON"]
+
+[[extra.tags]]
+name = "Svelte"
+accent = true
+
+[[extra.tags]]
+name = "Scrum"
+
+[[extra.tags]]
+name = "JSON"
+accent_secondary = true
 
 [[extra.glance]]
 label = "Sprints"
