@@ -2,7 +2,7 @@
 
 const STORAGE_KEY = "theme";
 const root = document.documentElement;
-const toggle = document.getElementById("theme-toggle");
+const toggles = document.querySelectorAll(".theme-toggle");
 
 /** @returns {"light" | "dark"} */
 function getEffectiveTheme() {
@@ -16,6 +16,20 @@ function getEffectiveTheme() {
         : "dark";
 }
 
+/**
+ * @param {"light" | "dark"} theme
+ * @param {Element} toggle
+ */
+function updateToggle(theme, toggle) {
+    const isLight = theme === "light";
+    toggle.setAttribute(
+        "aria-label",
+        isLight ? "Switch to dark theme" : "Switch to light theme",
+    );
+    toggle.setAttribute("aria-pressed", isLight ? "true" : "false");
+    toggle.dataset.theme = theme;
+}
+
 /** @param {"light" | "dark"} theme */
 function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
@@ -26,29 +40,19 @@ function applyTheme(theme) {
         // Private browsing or blocked storage — theme still applies for this visit.
     }
 
-    updateToggle(theme);
-}
-
-/** @param {"light" | "dark"} theme */
-function updateToggle(theme) {
-    if (!toggle) {
-        return;
-    }
-
-    const isLight = theme === "light";
-    toggle.setAttribute(
-        "aria-label",
-        isLight ? "Switch to dark theme" : "Switch to light theme",
-    );
-    toggle.setAttribute("aria-pressed", isLight ? "true" : "false");
-    toggle.dataset.theme = theme;
+    toggles.forEach((toggle) => {
+        updateToggle(theme, toggle);
+    });
 }
 
 function onToggleClick() {
     applyTheme(getEffectiveTheme() === "light" ? "dark" : "light");
 }
 
-if (toggle) {
-    updateToggle(getEffectiveTheme());
-    toggle.addEventListener("click", onToggleClick);
+if (toggles.length) {
+    const theme = getEffectiveTheme();
+    toggles.forEach((toggle) => {
+        updateToggle(theme, toggle);
+        toggle.addEventListener("click", onToggleClick);
+    });
 }

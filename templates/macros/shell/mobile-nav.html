@@ -1,0 +1,55 @@
+{% set nav = load_data(path="data/nav.yaml") %}
+{% set home_url = get_url(path="/") %}
+{% set is_home = page and page.permalink == home_url %}
+
+<div class="mobile-nav" data-mobile-nav>
+    <div class="mobile-nav__bar">
+        <button
+            type="button"
+            class="mobile-nav__toggle"
+            data-mobile-nav-toggle
+            aria-expanded="false"
+            aria-controls="mobile-nav-drawer"
+        >
+            <span class="mobile-nav__burger" aria-hidden="true">
+                <span class="mobile-nav__burger-line"></span>
+                <span class="mobile-nav__burger-line"></span>
+                <span class="mobile-nav__burger-line"></span>
+            </span>
+            <span class="mobile-nav__toggle-label">Menu</span>
+        </button>
+    </div>
+
+    <div
+        class="mobile-nav__overlay"
+        data-mobile-nav-overlay
+        hidden
+    >
+        <div
+            class="mobile-nav__panel"
+            id="mobile-nav-drawer"
+            data-mobile-nav-drawer
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
+            tabindex="-1"
+        >
+            <nav class="mobile-nav__nav" aria-label="Sections">
+                <ol class="mobile-nav__list">
+                    {% for item in nav.sections %}
+                    <li class="mobile-nav__item">
+                        <a
+                            class="mobile-nav__link scroll-nav__link"
+                            data-mobile-nav-link
+                            href="{% if is_home %}#{{ item.id }}{% else %}{{ home_url }}#{{ item.id }}{% endif %}"
+                        >{{ item.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </nav>
+            {% set theme_toggle_id = "theme-toggle-mobile" %}
+            {% set theme_toggle_modifier = "drawer" %}
+            {% include "macros/components/theme-toggle-button.html" %}
+        </div>
+    </div>
+</div>

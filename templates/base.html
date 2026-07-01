@@ -9,6 +9,7 @@
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  {% include "macros/shell/mobile-nav.html" %}
   <div class="site">
     {% block sidebar %}{% endblock sidebar %}
     <div class="site__main">
@@ -19,7 +20,10 @@
       {% include "macros/shell/footer.html" %}
     </div>
   </div>
-  {% block scripts %}{% endblock scripts %}
+  {% block scripts %}
+  <script type="module" src="{{ get_url(path='js/theme.js') | safe }}"></script>
+  <script type="module" src="{{ get_url(path='js/mobile-nav.js') | safe }}"></script>
+  {% endblock scripts %}
 </body>
 
 </html>

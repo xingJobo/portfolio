@@ -19,10 +19,11 @@ if (links.length) {
 
     if (sections.length) {
         const setActive = (id) => {
-            links.forEach((link) => {
+            document.querySelectorAll(".scroll-nav__link").forEach((link) => {
                 link.classList.toggle(
                     "scroll-nav__link--active",
-                    link.getAttribute("href") === `#${id}`,
+                    link.getAttribute("href") === `#${id}` ||
+                        link.getAttribute("href")?.endsWith(`#${id}`),
                 );
             });
         };
