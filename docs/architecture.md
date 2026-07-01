@@ -170,7 +170,7 @@ Design accents: `#434343`, `#5aba86`, `#193654` (see theme CSS variables for ful
 
 | Path | Purpose |
 |------|---------|
-| `static/js/terminal/` | fauxsh — `index.js`, `commands.js`, `vfs.js`, `completion.js`, `format.js`, `prompt.js` |
+| `static/js/terminal/` | fauxsh — `index.js`, `vfs-load.js`, `commands.js`, `vfs.js`, … |
 | `static/js/scroll-nav.js` | Section scroll spy |
 | `static/js/theme.js` | Light/dark toggle (pairs with inline script in `head.html`) |
 | `static/images/projects/` | Thumbnails (not added yet) |
@@ -183,12 +183,12 @@ Fake shell in the hero — **not** a real shell. Client-side parser over a build
 
 ### Build-time VFS
 
-`terminal-vfs.html` embeds JSON in `#terminal-fs`. Markdown bodies built by `vfs-markdown.html` macros:
+`macros/terminal/vfs-payload.html` builds JSON; emitted as `content/terminal-vfs.md` → `/terminal-vfs.json` (not inlined in home HTML).
 
 | Virtual file | Source |
 |--------------|--------|
 | `README.md` | `data/terminal/readme.yaml` |
-| `about.md` | `_index.md` `[extra]` + `about.yaml` lead |
+| `about.md` | `data/about.yaml` (`hero` + lead) |
 | `experience.md` | `about.yaml` bio + pillars |
 | `skills.md` | `skills.yaml` |
 | `projects.md` | `get_section("projects/_index.md")` |
@@ -201,11 +201,13 @@ Fake shell in the hero — **not** a real shell. Client-side parser over a build
 ### Runtime
 
 ```text
-zola build → JSON in page
-Browser → alpine:init → Alpine.data('fauxsh') → commands.js / vfs.js
+zola build → terminal-vfs.json (separate page, not inlined in home HTML)
+Browser → user opens terminal → fetch(terminal-vfs.json) → Alpine.data('fauxsh') → commands.js / vfs.js
 ```
 
-No JS bundler; ES modules on GitHub Pages. Fallback: `fauxsh-fallback.html` + 3s timeout class if modules fail.
+VFS is **lazy-loaded** on first terminal open (`terminal-open` event) or focus/click — not embedded in the home page HTML.
+
+No JS bundler; ES modules on GitHub Pages. Fallback: `fauxsh-fallback.html` static preview until open; fetch failure adds `fauxsh--fallback`.
 
 ### Out of scope for fauxsh
 
@@ -216,6 +218,7 @@ Real shell, `eval`, network from commands, xterm.js, WASM.
 | URL | Page |
 |-----|------|
 | `/` | Scrolling home |
+| `/terminal-vfs.json/` | Fauxsh VFS payload (fetched on terminal open) |
 | `/projects/<slug>/` | Case study |
 | `/projects/` | Section index (project grid) |
 

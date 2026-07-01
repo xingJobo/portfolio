@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { parseCommand, runCommand } from "./commands.js";
 import { completeLine } from "./completion.js";
+import { parseVfsJson } from "./vfs-load.js";
 import { normalizeTerminalContent } from "./vfs.js";
 
 /** @type {import("./vfs.js").TerminalVfs} */
@@ -39,6 +40,27 @@ describe("normalizeTerminalContent", () => {
 
   it("leaves real newlines unchanged", () => {
     expect(normalizeTerminalContent("already\nfine")).toBe("already\nfine");
+  });
+});
+
+describe("parseVfsJson", () => {
+  it("parses JSON and normalizes file contents", () => {
+    const vfs = parseVfsJson(
+      JSON.stringify({
+        cwd: "/home/xingjobo",
+        files: {
+          "README.md": { hidden: false, content: "line one\\nline two" },
+        },
+      }),
+    );
+
+    expect(vfs.files["README.md"].content).toBe("line one\nline two");
+  });
+
+  it("rejects payloads without a files map", () => {
+    expect(() => parseVfsJson(JSON.stringify({ cwd: "/home/xingjobo" }))).toThrow(
+      "Invalid terminal VFS payload",
+    );
   });
 });
 

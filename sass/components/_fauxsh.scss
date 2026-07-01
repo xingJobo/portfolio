@@ -151,6 +151,26 @@ $font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", menlo, cons
 
     line-height: 1.2;
 
+    &--preview {
+        display: block;
+    }
+
+    &--loading,
+    &--error {
+        margin: 0;
+        padding: $spacing-sm $spacing-md;
+        font-family: inherit;
+    }
+
+    &--loading {
+        color: $color-terminal-text;
+        opacity: 0.75;
+    }
+
+    &--error {
+        color: $color-terminal-error;
+    }
+
 
 
     @media (prefers-reduced-motion: reduce) {

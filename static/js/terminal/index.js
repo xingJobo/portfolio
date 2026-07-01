@@ -5,24 +5,9 @@ import { completeLine } from "./completion.js";
 import { runCommand } from "./commands.js";
 import { formatPromptHtml, formatTerminalOutput } from "./format.js";
 import { formatPrompt } from "./prompt.js";
-import { normalizeTerminalContent } from "./vfs.js";
-/**
- * @returns {import("./commands.js").TerminalVfs}
- */
-function loadVfs() {
-  const element = document.getElementById("terminal-fs");
-  if (!element?.textContent) {
-    return { cwd: "/home/xingjobo", files: {} };
-  }
+import { fetchVfs } from "./vfs-load.js";
 
-  const vfs = JSON.parse(element.textContent);
-
-  for (const file of Object.values(vfs.files)) {
-    file.content = normalizeTerminalContent(file.content);
-  }
-
-  return vfs;
-}
+const EMPTY_VFS = { cwd: "/home/xingjobo", files: {} };
 
 function bootMessage(vfs) {
   return runCommand(vfs, "cat README.md").lines.join("\n");
@@ -32,6 +17,10 @@ function bootMessage(vfs) {
  * @typedef {import("./commands.js").TerminalVfs} TerminalVfs
  * @typedef {{
  *   vfs: TerminalVfs,
+ *   vfsUrl: string,
+ *   vfsReady: boolean,
+ *   vfsLoading: boolean,
+ *   vfsError: string,
  *   output: string,
  *   line: string,
  *   history: string[],
@@ -42,6 +31,7 @@ function bootMessage(vfs) {
  *   $refs: { input?: HTMLInputElement, output?: HTMLElement },
  *   $nextTick: (callback: () => void) => void,
  *   init: () => void,
+ *   activate: () => Promise<void>,
  *   focusInput: () => void,
  *   scrollOutput: () => void,
  *   appendOutput: (text: string) => void,
@@ -57,7 +47,11 @@ function bootMessage(vfs) {
 
 function fauxsh() {
   return {
-    vfs: loadVfs(),
+    vfs: { ...EMPTY_VFS, files: {} },
+    vfsUrl: "",
+    vfsReady: false,
+    vfsLoading: false,
+    vfsError: "",
     output: "",
     line: "",
     history: /** @type {string[]} */ ([]),
@@ -79,21 +73,58 @@ function fauxsh() {
 
     /** @this {fauxshContext} */
     init() {
-      this.output = bootMessage(this.vfs);
-      this.$el.classList.add("fauxsh--ready");
-      if (this.$refs.input) {
-        this.$refs.input.disabled = false;
+      this.vfsUrl = this.$el.dataset.vfsUrl ?? "";
+      this.$el.classList.add("fauxsh--deferred");
+    },
+
+    /** @this {fauxshContext} */
+    async activate() {
+      if (this.vfsReady || this.vfsLoading) {
+        this.focusInput();
+        return;
       }
-      this.$nextTick(() => {
-        const output = this.$refs.output;
-        if (output) {
-          output.scrollTop = 0;
+
+      this.vfsLoading = true;
+      this.vfsError = "";
+      this.$el.classList.add("fauxsh--activating");
+
+      try {
+        this.vfs = await fetchVfs(this.vfsUrl);
+        this.output = bootMessage(this.vfs);
+        this.vfsReady = true;
+        this.$el.classList.add("fauxsh--ready");
+        this.$el.classList.remove("fauxsh--deferred");
+
+        if (this.$refs.input) {
+          this.$refs.input.disabled = false;
         }
-      });
+
+        this.$nextTick(() => {
+          const output = this.$refs.output;
+          if (output) {
+            output.scrollTop = 0;
+          }
+        });
+
+        this.focusInput();
+      } catch (error) {
+        this.vfsError =
+          error instanceof Error
+            ? error.message
+            : "Could not load the interactive terminal.";
+        this.$el.classList.add("fauxsh--fallback");
+      } finally {
+        this.vfsLoading = false;
+        this.$el.classList.remove("fauxsh--activating");
+      }
     },
 
     /** @this {fauxshContext} */
     focusInput() {
+      if (!this.vfsReady) {
+        return;
+      }
+
       this.$nextTick(() => {
         this.$refs.input?.focus();
       });
@@ -205,6 +236,10 @@ function fauxsh() {
 
     /** @this {fauxshContext} */
     runCommand() {
+      if (!this.vfsReady) {
+        return;
+      }
+
       const input = this.line.trim();
       if (!input) {
         return;

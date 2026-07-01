@@ -1,18 +1,18 @@
 {# Fauxsh VFS markdown — derived at build time from the same data as page sections. #}
 
-{% macro about_md(section_extra, about) -%}
+{% macro about_md(about) -%}
 # About
 
-**{{ section_extra.subtitle }}**
+**{{ about.hero.subtitle }}**
 
-{{ section_extra.headline }}
+{{ about.hero.headline }}
 
-{% if section_extra.lead_work -%}
-{{ section_extra.lead_work }}
+{% if about.hero.lead_work -%}
+{{ about.hero.lead_work }}
 
 {% endif -%}
-{% if section_extra.lead_school -%}
-{{ section_extra.lead_school }}
+{% if about.hero.lead_school -%}
+{{ about.hero.lead_school }}
 
 {% endif -%}
 {{ about.lead }}

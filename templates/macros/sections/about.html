@@ -1,5 +1,4 @@
 {% set about = load_data(path="data/about.yaml") %}
-{% set projects = get_section(path="projects/_index.md") %}
 <section id="about" class="section about">
     <div class="container about__inner">
 
@@ -17,7 +16,7 @@
                     <span class="about__initials">{{ about.profile.initials }}</span>
                 </div>
                 <p class="about__name">{{ config.title }}</p>
-                <p class="about__role">{{ section.extra.subtitle | default(value="Software developer") }}</p>
+                <p class="about__role">{{ about.hero.subtitle | default(value="Software developer") }}</p>
                 {% if about.profile.resume_url %}
                 <a class="about__resume btn btn--ghost" href="{{ about.profile.resume_url }}">
                     {{ about.profile.resume_label | default(value="Download resume") }}

@@ -1,3 +1,5 @@
+{% set about = load_data(path="data/about.yaml") %}
+{% set hero = about.hero %}
 <section
     id="hero"
     class="section hero"
@@ -7,35 +9,35 @@
     <div class="container">
         <div class="hero__inner" :class="{ 'hero__inner--terminal-open': terminalOpen }">
             <div class="hero__content">
-                {% if section.extra.subtitle %}
-                <p class="hero__subtitle">{{ section.extra.subtitle }}</p>
+                {% if hero.subtitle %}
+                <p class="hero__subtitle">{{ hero.subtitle }}</p>
                 {% endif %}
-                <h1 class="hero__title">{{ section.extra.headline | default(value=section.title) }}</h1>
-                {% if section.extra.lead_work %}
-                <p class="hero__lead">{{ section.extra.lead_work }}</p>
+                <h1 class="hero__title">{{ hero.headline | default(value=section.title) }}</h1>
+                {% if hero.lead_work %}
+                <p class="hero__lead">{{ hero.lead_work }}</p>
                 {% endif %}
-                {% if section.extra.lead_school %}
-                <p class="hero__lead">{{ section.extra.lead_school }}</p>
+                {% if hero.lead_school %}
+                <p class="hero__lead">{{ hero.lead_school }}</p>
                 {% endif %}
                 <div class="hero__actions">
-                    <a class="btn btn--primary" href="#work">{{ section.extra.cta_primary | default(value="View work") }}</a>
-                    <a class="btn btn--ghost" href="#contact">{{ section.extra.cta_secondary | default(value="Get in touch") }}</a>
+                    <a class="btn btn--primary" href="#work">{{ hero.cta_primary | default(value="View work") }}</a>
+                    <a class="btn btn--ghost" href="#contact">{{ hero.cta_secondary | default(value="Get in touch") }}</a>
                 </div>
-                {% if section.extra.terminal_cta_label or section.extra.terminal_cta_lead %}
+                {% if hero.terminal_cta_label or hero.terminal_cta_lead %}
                 <div class="hero__terminal-cta">
-                    {% if section.extra.terminal_cta_label %}
+                    {% if hero.terminal_cta_label %}
                     <button
                         type="button"
                         class="btn btn--terminal"
                         :aria-expanded="terminalOpen"
                         aria-controls="terminal"
-                        @click="terminalOpen = !terminalOpen; if (terminalOpen) $nextTick(() => document.getElementById('terminal-input')?.focus())"
+                        @click="terminalOpen = !terminalOpen; if (terminalOpen) { $dispatch('terminal-open') }"
                     >
-                        {{ section.extra.terminal_cta_label }}
+                        {{ hero.terminal_cta_label }}
                     </button>
                     {% endif %}
-                    {% if section.extra.terminal_cta_lead %}
-                    <p class="hero__terminal-lead">{{ section.extra.terminal_cta_lead }}</p>
+                    {% if hero.terminal_cta_lead %}
+                    <p class="hero__terminal-lead">{{ hero.terminal_cta_lead }}</p>
                     {% endif %}
                 </div>
                 {% endif %}

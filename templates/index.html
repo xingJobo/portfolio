@@ -24,9 +24,9 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
 <script>
     window.setTimeout(function () {
-        document.querySelectorAll(".fauxsh:not(.fauxsh--ready)").forEach(function (el) {
+        document.querySelectorAll(".fauxsh.fauxsh--activating:not(.fauxsh--ready)").forEach(function (el) {
             el.classList.add("fauxsh--fallback");
         });
-    }, 3000);
+    }, 10000);
 </script>
 {% endblock scripts %}

@@ -1,4 +1,15 @@
 # About section — bio, profile card, value pillars (see docs/planning/portfolio-mockup-about.svg)
+# Hero copy lives here too (single source for hero.html + fauxsh about.md).
+
+hero:
+  subtitle: Software developer in training
+  headline: Web development that ships
+  lead_work: "Work experience: Smarty templates, vanilla HTML & JS, Python apps, and sites for a real shop."
+  lead_school: "School experience: Projects in containers, databases, and agile delivery."
+  cta_primary: View work
+  cta_secondary: Get in touch
+  terminal_cta_label: Interactive terminal
+  terminal_cta_lead: For developers who prefer the terminal to discover information.
 
 lead: Apprentice developer with a mix of production web work and structured training. Focused on clear code and practical delivery.
 
