@@ -10,7 +10,7 @@ Task breakdown: parent repo `docs/planning/work_packages.md`.
 | SSG | [Zola](https://www.getzola.org/) 0.22.x | Build Markdown + templates → static HTML |
 | Templates | [Tera](https://keats.github.io/tera/docs/) | HTML layouts and macros |
 | Styles | SCSS in `sass/` | Compiled to CSS at build time (`compile_sass = true`) |
-| UI | Alpine.js + vanilla JS | Hero terminal (`fauxsh`); scroll spy (`scroll-nav.js`); mobile drawer planned |
+| UI | Alpine.js + vanilla JS | Hero terminal (fauxsh) (`fauxsh`); scroll spy (`scroll-nav.js`); mobile drawer planned |
 | Data | YAML in `data/` | Nav sections, skills — loaded via `load_data()` |
 | Lint (dev) | Stylelint, markdownlint, Prettier | `npm run lint` — not part of Zola build |
 | Deploy | GitHub Actions | `getzola/github-pages` → GitHub Pages |
@@ -89,9 +89,9 @@ YAML files in `data/` keep lists editable without touching templates.
 |------|-------------|---------|
 | `data/nav.yaml` | `macros/shell/scroll-nav.html` | Six scroll sections; `id` matches DOM `id` on home |
 | `data/skills.yaml` | `macros/sections/skills.html` | Skill bars + “also comfortable with” tags |
-| `data/experience.yaml` | Hero terminal | Roles, dates, highlights → `experience.md` in virtual FS |
-| `data/terminal/readme.yaml` | Hero terminal | `README.md` welcome text and boot hint |
-| `data/terminal/easter-eggs.yaml` | Hero terminal | Hidden dotfile content (`ls -a`) |
+| `data/about.yaml` | fauxsh + about section | Bio, pillars → `experience.md` in virtual FS; section UI |
+| `data/terminal/readme.yaml` | fauxsh | `README.md` welcome text (`cat README.md`; boot uses `help`) |
+| `data/terminal/easter-eggs.yaml` | fauxsh | Hidden dotfile content (`ls -a`) |
 
 Load in templates:
 
@@ -135,7 +135,7 @@ sass/
     ├── _project-card.scss
     ├── _skills.scss
     ├── _contact.scss
-    └── _hero-terminal.scss   # Hero terminal chrome (planned)
+    └── _fauxsh.scss   # Hero terminal (fauxsh) chrome (planned)
 ```
 
 Partials are prefixed with `_` and imported via `@use` from `main.scss`.  
@@ -151,7 +151,7 @@ Linked in `templates/macros/head.html`:
 
 | Path | Purpose |
 |------|---------|
-| `static/js/terminal/` | Hero terminal — ES modules, no bundler (see below) |
+| `static/js/terminal/` | Hero terminal (fauxsh) — ES modules, no bundler (see below) |
 | `static/images/projects/` | Thumbnails, case study heroes |
 | `static/images/og/` | Social preview 1200×630 |
 | `static/favicon.ico` | Favicon |
@@ -192,7 +192,7 @@ Internal SCSS organization (`common/`, `layout/`, `components/`) is shared; only
 index.html
   ├── macros/shell/scroll-nav.html   ← data/nav.yaml
   ├── macros/sections/hero.html
-  │     └── macros/components/hero-terminal.html  ← virtual FS (planned)
+  │     └── macros/components/fauxsh.html  ← virtual FS (planned)
   ├── macros/sections/work.html      ← projects section
   ├── macros/sections/skills.html    ← data/skills.yaml
   └── macros/sections/contact.html   ← form + links
@@ -200,7 +200,7 @@ index.html
 
 ---
 
-## Hero terminal (planned)
+## Hero terminal (fauxsh) (planned)
 
 Interactive fake shell in the hero visual slot. Visitors explore portfolio content with familiar commands (`ls`, `cat`) instead of scrolling first. **Not a real shell** — a client-side command parser over a virtual filesystem built at compile time.
 
@@ -216,24 +216,24 @@ Interactive fake shell in the hero visual slot. Visitors explore portfolio conte
 ```text
 portfolio/
 ├── data/
-│   ├── experience.yaml              # roles, dates, bullet highlights
+│   ├── about.yaml                   # shared with about section → experience.md
 │   └── terminal/
 │       └── easter-eggs.yaml         # dotfile names + body text (.bash_history, …)
 ├── static/js/terminal/              # copied to /js/terminal/ — ES modules, no bundler
-│   ├── index.js                     # Alpine.data('heroTerminal', …), boot message
+│   ├── index.js                     # Alpine.data('fauxsh', …), boot message
 │   ├── commands.js                  # parse input → dispatch handlers → output lines
 │   └── vfs.js                       # list/cat helpers over injected filesystem object
 ├── templates/macros/components/
-│   └── hero-terminal.html           # markup, prompt, output area, JSON bootstrap
+│   └── fauxsh.html           # markup, prompt, output area, JSON bootstrap
 └── sass/components/
-    └── _hero-terminal.scss          # dark panel, mono font, prompt, cursor
+    └── _fauxsh.scss          # dark panel, mono font, prompt, cursor
 ```
 
 Existing files touched:
 
-- `templates/macros/sections/hero.html` — replace placeholder with `{% include "macros/components/hero-terminal.html" %}`
+- `templates/macros/sections/hero.html` — replace placeholder with `{% include "macros/components/fauxsh.html" %}`
 - `templates/index.html` — load terminal module after Alpine CDN
-- `sass/main.scss` — `@use "components/hero-terminal"`
+- `sass/main.scss` — `@use "components/fauxsh"`
 
 ### Virtual filesystem
 
@@ -257,7 +257,7 @@ At **build time**, a Tera macro builds one JSON object and embeds it in the page
 |--------------|------------|
 | `README.md` | Static welcome + `help` hint |
 | `about.md` | `content/_index.md` `[extra]` (subtitle, headline, lead) + `data/about.yaml` (`lead`) |
-| `experience.md` | `data/experience.yaml` |
+| `experience.md` | `data/about.yaml` (bio + pillars) |
 | `skills.md` | `data/skills.yaml` (bars + tags, plain-text layout) |
 | `projects.md` | `get_section(path="projects/_index.md")` — title, description, tags per page |
 | Dotfiles | `data/terminal/easter-eggs.yaml` — only visible with `ls -a` |
@@ -270,7 +270,7 @@ Content is **plain text** (markdown source as terminal output), not rendered HTM
 |------|----------------|
 | `vfs.js` | `listFiles(showHidden)`, `readFile(name)` — fuzzy match OK (`cat about` → `about.md`) |
 | `commands.js` | Split input, route to handlers; return `string[]` lines for the output buffer |
-| `index.js` | Register `Alpine.data('heroTerminal', () => ({ … }))`; history (↑/↓) optional in v2 |
+| `index.js` | Register `Alpine.data('fauxsh', () => ({ … }))`; history (↑/↓) optional in v2 |
 
 **v1 commands**
 
@@ -290,13 +290,13 @@ Unknown input → `command not found: …` (or `sh: …: not found` for flavor).
 
 ```text
 zola build
-  └── Tera macro serializes virtual FS → JSON in hero-terminal.html
+  └── Tera macro serializes virtual FS → JSON in fauxsh.html
 
 Browser
   └── Alpine.js (CDN, already on index.html)
         └── <script type="module" src="/js/terminal/index.js">
               ├── reads #terminal-fs JSON
-              ├── registers heroTerminal component
+              ├── registers fauxsh component
               └── input @keydown.enter → commands.js → append to output <pre>
 ```
 
@@ -305,17 +305,17 @@ No npm build step for JS — native ES `import` works on GitHub Pages.
 ### Template wiring (sketch)
 
 ```html
-{# hero-terminal.html #}
+{# fauxsh.html #}
 <div
-  class="hero-terminal"
-  x-data="heroTerminal"
+  class="fauxsh"
+  x-data="fauxsh"
   role="region"
   aria-label="Portfolio terminal"
 >
-  <pre class="hero-terminal__output" x-ref="output" …></pre>
-  <form class="hero-terminal__input-row" @submit.prevent="runCommand">
+  <pre class="fauxsh__output" x-ref="output" …></pre>
+  <form class="fauxsh__input-row" @submit.prevent="runCommand">
     <label for="terminal-input" class="visually-hidden">Terminal command</label>
-    <span class="hero-terminal__prompt" aria-hidden="true">$</span>
+    <span class="fauxsh__prompt" aria-hidden="true">$</span>
     <input id="terminal-input" x-ref="input" x-model="line" autocomplete="off" spellcheck="false" />
   </form>
 </div>
@@ -347,7 +347,7 @@ Build in order — each step should compile with `zola build` and be manually te
 
 | Task | File |
 |------|------|
-| Add experience entries (role, period, bullets) | `data/experience.yaml` |
+| Add / edit bio and pillars | `data/about.yaml` |
 | Add 1–2 hidden dotfiles for `ls -a` | `data/terminal/easter-eggs.yaml` |
 | Confirm hero/about copy in front matter | `content/_index.md` |
 
@@ -361,9 +361,9 @@ Build in order — each step should compile with `zola build` and be manually te
 
 | Task | File |
 |------|------|
-| Terminal markup (title bar, output `<pre>`, prompt + input) | `templates/macros/components/hero-terminal.html` |
+| Terminal markup (title bar, output `<pre>`, prompt + input) | `templates/macros/components/fauxsh.html` |
 | Swap placeholder for include | `templates/macros/sections/hero.html` |
-| Dark panel, mono font, cursor, 4:3 aspect | `sass/components/_hero-terminal.scss` |
+| Dark panel, mono font, cursor, 4:3 aspect | `sass/components/_fauxsh.scss` |
 | Import component styles | `sass/main.scss` |
 
 Hard-code static lines in the `<pre>` (e.g. `Welcome. Try: ls`) so layout can be judged in the browser.
@@ -378,7 +378,7 @@ Hard-code static lines in the `<pre>` (e.g. `Welcome. Try: ls`) so layout can be
 
 | Task | File |
 |------|------|
-| Build `files` map from data + projects section | `templates/macros/components/hero-terminal.html` (Tera) |
+| Build `files` map from data + projects section | `templates/macros/components/fauxsh.html` (Tera) |
 | Emit `<script type="application/json" id="terminal-fs">` | same |
 
 Map sources per table above (`about.md` ← `_index` extra, `skills.md` ← `skills.yaml`, etc.). Use placeholder text where content is not final.
@@ -422,9 +422,9 @@ Map sources per table above (`about.md` ← `_index` extra, `skills.md` ← `ski
 
 | Task | File |
 |------|------|
-| `Alpine.data('heroTerminal', …)` on `alpine:init` | `static/js/terminal/index.js` |
+| `Alpine.data('fauxsh', …)` on `alpine:init` | `static/js/terminal/index.js` |
 | Read `#terminal-fs` on init; boot message in output | same |
-| Enter submits command; echo `$ command` then result lines | `hero-terminal.html` |
+| Enter submits command; echo `$ command` then result lines | `fauxsh.html` |
 | Load module after Alpine CDN | `templates/index.html` |
 
 Remove hard-coded static `<pre>` content from Step 1; drive output from Alpine state.
@@ -439,9 +439,9 @@ Remove hard-coded static `<pre>` content from Step 1; drive output from Alpine s
 
 | Task | File |
 |------|------|
-| Wire dotfiles from `easter-eggs.yaml` into VFS | `hero-terminal.html` (Tera) |
+| Wire dotfiles from `easter-eggs.yaml` into VFS | `fauxsh.html` (Tera) |
 | Tune `README.md` welcome + hints (`ls`, `cat about.md`) | Tera or `data/terminal/` |
-| Real experience bullets in `experience.yaml` | `data/experience.yaml` |
+| Bio copy in `about.yaml` feeds `experience.md` | `data/about.yaml` |
 
 **Verify:** `ls` hides dotfiles; `ls -a` reveals them; `cat .bash_history` (or similar) prints joke content.
 
@@ -453,7 +453,7 @@ Remove hard-coded static `<pre>` content from Step 1; drive output from Alpine s
 
 | Task | File |
 |------|------|
-| `role="region"`, `aria-label`, labelled input | `hero-terminal.html` |
+| `role="region"`, `aria-label`, labelled input | `fauxsh.html` |
 | Remove `aria-hidden` from hero visual wrapper | `hero.html` |
 | `@media (prefers-reduced-motion)` — static README, no boot typing | SCSS + `index.js` |
 | Focus input on terminal click; visible focus styles | SCSS |
@@ -478,7 +478,7 @@ Not required for v1:
 #### Step summary
 
 ```text
-0  data/experience.yaml + easter-eggs.yaml
+0  about.yaml + easter-eggs.yaml + readme.yaml
 1  markup + SCSS (static terminal chrome)
 2  Tera → JSON virtual FS in page
 3  vfs.js

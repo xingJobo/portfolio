@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * Virtual filesystem helpers for the hero terminal.
+ * Virtual filesystem helpers for the fauxsh terminal.
  * @typedef {{ hidden: boolean, content: string }} TerminalFile
  * @typedef {{ cwd?: string, files: Record<string, TerminalFile> }} TerminalVfs
  */

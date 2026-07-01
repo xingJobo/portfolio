@@ -34,16 +34,17 @@
                     <p class="contact__success" id="contact-success" hidden role="status">
                         {{ contact.form.success_message | default(value="Thanks — your message was sent.") }}
                     </p>
-                    {% if contact.form.access_key %}
+                    <p class="contact__error" id="contact-error" hidden role="alert"></p>
+                    {% if contact.form.endpoint %}
                     <form
                         class="contact__form"
-                        action="{{ contact.form.action | default(value='https://api.web3forms.com/submit') }}"
+                        id="contact-form"
+                        action="{{ contact.form.endpoint }}"
                         method="post"
+                        data-endpoint="{{ contact.form.endpoint }}"
+                        data-subject="{{ contact.form.subject | default(value='Portfolio contact') }}"
+                        data-from-name="{{ contact.form.from_name | default(value=config.title) }}"
                     >
-                        <input type="hidden" name="access_key" value="{{ contact.form.access_key }}">
-                        <input type="hidden" name="subject" value="{{ contact.form.subject | default(value='Portfolio contact') }}">
-                        <input type="hidden" name="from_name" value="{{ contact.form.from_name | default(value=config.title) }}">
-                        <input type="hidden" name="redirect" value="{{ config.base_url }}?contact=sent#contact">
                         <input type="checkbox" name="botcheck" class="contact__honeypot" tabindex="-1" autocomplete="off">
                         <div class="contact__field">
                             <label class="contact__label" for="contact-name">Name</label>
@@ -80,7 +81,7 @@
                                 required
                             ></textarea>
                         </div>
-                        <button class="btn btn--primary contact__submit" type="submit">
+                        <button class="btn btn--primary contact__submit" type="submit" id="contact-submit">
                             {{ contact.form.submit_label | default(value="Send message") }}
                         </button>
                     </form>
@@ -110,15 +111,82 @@
     </div>
     <script>
         (function () {
-            if (new URLSearchParams(window.location.search).get("contact") !== "sent") {
-                return;
-            }
+            var form = document.getElementById("contact-form");
             var success = document.getElementById("contact-success");
-            if (success) {
-                success.hidden = false;
+            var error = document.getElementById("contact-error");
+            var submit = document.getElementById("contact-submit");
+            var defaultSubmitLabel = submit ? submit.textContent : "Send message";
+
+            function showSuccess() {
+                if (success) {
+                    success.hidden = false;
+                }
+                if (error) {
+                    error.hidden = true;
+                }
             }
-            var cleanUrl = window.location.pathname + "#contact";
-            window.history.replaceState(null, "", cleanUrl);
+
+            function showError(message) {
+                if (error) {
+                    error.textContent = message;
+                    error.hidden = false;
+                }
+                if (success) {
+                    success.hidden = true;
+                }
+            }
+
+            if (form) {
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    if (error) {
+                        error.hidden = true;
+                    }
+
+                    var honeypot = form.querySelector('input[name="botcheck"]');
+                    if (honeypot && honeypot.checked) {
+                        showSuccess();
+                        form.reset();
+                        return;
+                    }
+
+                    if (submit) {
+                        submit.disabled = true;
+                        submit.textContent = "Sending…";
+                    }
+
+                    fetch(form.dataset.endpoint, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            subject: form.dataset.subject,
+                            from_name: form.dataset.fromName,
+                            name: form.querySelector("#contact-name").value.trim(),
+                            email: form.querySelector("#contact-email").value.trim(),
+                            message: form.querySelector("#contact-message").value.trim(),
+                        }),
+                    })
+                        .then(function (response) {
+                            return response.json().then(function (data) {
+                                if (!response.ok || !data.success) {
+                                    throw new Error(data.message || "Something went wrong. Please try again.");
+                                }
+                                showSuccess();
+                                form.reset();
+                            });
+                        })
+                        .catch(function (err) {
+                            showError(err.message || "Could not send your message. Please email me directly.");
+                        })
+                        .finally(function () {
+                            if (submit) {
+                                submit.disabled = false;
+                                submit.textContent = defaultSubmitLabel;
+                            }
+                        });
+                });
+            }
         })();
     </script>
 </section>

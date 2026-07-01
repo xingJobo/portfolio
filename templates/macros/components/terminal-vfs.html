@@ -1,5 +1,4 @@
 {% set about = load_data(path="data/about.yaml") %}
-{% set experience = load_data(path="data/experience.yaml") %}
 {% set skills = load_data(path="data/skills.yaml") %}
 {% set projects = get_section(path="projects/_index.md") %}
 {% set easter_eggs = load_data(path="data/terminal/easter-eggs.yaml") %}
@@ -21,12 +20,13 @@
 {% endif %}
 {% set about_content = "# About\n\n**" ~ section.extra.subtitle ~ "**\n\n" ~ section.extra.headline ~ "\n\n" ~ hero_lead ~ "\n\n" ~ about.lead %}
 
-{% set_global experience_content = experience.intro ~ "\n" %}
-{% for entry in experience.entries %}
-{% set_global experience_content = experience_content ~ "\n## " ~ entry.role ~ " — " ~ entry.org ~ "\n_" ~ entry.period ~ "_\n" %}
-{% for highlight in entry.highlights %}
-{% set_global experience_content = experience_content ~ "\n- " ~ highlight %}
+{% set_global experience_content = "# Experience\n\n" ~ about.lead ~ "\n" %}
+{% for paragraph in about.bio %}
+{% set_global experience_content = experience_content ~ "\n" ~ paragraph ~ "\n" %}
 {% endfor %}
+{% set_global experience_content = experience_content ~ "\n## What I value\n\n" %}
+{% for pillar in about.pillars %}
+{% set_global experience_content = experience_content ~ "### " ~ pillar.title ~ "\n" ~ pillar.text ~ "\n\n" %}
 {% endfor %}
 
 {% set_global skills_content = "# Core stack\n\n" %}

@@ -1,15 +1,12 @@
 # Contact section — see docs/planning/portfolio-mockup-contact.svg
 # Form: Web3Forms — https://web3forms.com/ → Create Access Key (emailed to you)
 
-badge: Open for apprenticeship & projects
 title: Let's talk
 lead: Have a project in mind? Send a message or reach out directly.
 
 form:
-  provider: web3forms
-  action: https://api.web3forms.com/submit
-  # Paste your key from the Web3Forms email (safe to commit — public client-side key)
-  access_key: "4fbd53e9-ba33-4977-9303-c589a6c70b22"
+  # Cloudflare Worker proxies to Web3Forms; key lives in Worker secrets only
+  endpoint: https://portfolio-contact.xingjobo.workers.dev
   subject: New message from xingJobo portfolio
   from_name: xingJobo portfolio
   submit_label: Send message
