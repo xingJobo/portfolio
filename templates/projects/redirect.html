@@ -1,0 +1,16 @@
+{# Client-side redirect: /projects/ duplicates the home #work section. #}
+{% set target = get_url(path="/") ~ "#work" %}<!DOCTYPE html>
+<html lang="{{ config.default_language | default(value='en') }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, follow">
+    <title>Redirecting to work</title>
+    <link rel="canonical" href="{{ target | safe }}">
+    <meta http-equiv="refresh" content="0; url={{ target | safe }}">
+    <script>window.location.replace("{{ target | safe }}");</script>
+</head>
+<body>
+    <p>This page has moved. <a href="{{ target | safe }}">Continue to selected work</a>.</p>
+</body>
+</html>
