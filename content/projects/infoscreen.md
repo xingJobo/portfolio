@@ -5,7 +5,7 @@ description = "Team-built office dashboard on a Raspberry Pi — presence, weath
 template = "projects/single.html"
 
 [extra]
-thumbnail = "checklist"
+thumbnail = "infoscreen"
 role = "Team member"
 
 [[extra.tags]]

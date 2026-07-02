@@ -4,14 +4,14 @@
             class="project-card__media{% if page.extra.thumbnail is defined %} project-card__media--{{ page.extra.thumbnail }}{% endif %}"
             aria-hidden="true"
         >
-            {% if page.extra.thumbnail is defined and page.extra.thumbnail == "inventory" %}
+            {% if page.extra.thumbnail is defined and page.extra.thumbnail == "wordle" %}
             <span class="project-card__media-bar project-card__media-bar--accent"></span>
             <span class="project-card__media-bar"></span>
             <span class="project-card__media-bar project-card__media-bar--wide"></span>
             <span class="project-card__media-orb"></span>
-            {% elif page.extra.thumbnail is defined and page.extra.thumbnail == "checklist" %}
+            {% elif page.extra.thumbnail is defined and page.extra.thumbnail == "infoscreen" %}
             <span class="project-card__media-check"></span>
-            {% elif page.extra.thumbnail is defined and page.extra.thumbnail == "migration" %}
+            {% elif page.extra.thumbnail is defined and page.extra.thumbnail == "swimrun-timer" %}
             <span class="project-card__media-block project-card__media-block--source"></span>
             <span class="project-card__media-arrow" aria-hidden="true"></span>
             <span class="project-card__media-services">

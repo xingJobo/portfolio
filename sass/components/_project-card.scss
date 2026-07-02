@@ -45,7 +45,7 @@
     background: $color-surface-muted;
 }
 
-.project-card__media--inventory {
+.project-card__media--wordle {
     background: linear-gradient(180deg, $color-surface-elevated 0%, $color-surface-muted 100%);
 
     &::after {
@@ -57,7 +57,7 @@
     }
 }
 
-.project-card__media--checklist {
+.project-card__media--infoscreen {
     background: linear-gradient(180deg, $color-surface-elevated 0%, $color-surface-muted 100%);
 
     &::after {
@@ -69,7 +69,7 @@
     }
 }
 
-.project-card__media--migration {
+.project-card__media--swimrun-timer {
     display: flex;
     align-items: center;
     gap: $spacing-xs;

@@ -5,7 +5,7 @@ description = "A Svelte Wordle game delivered in two sprints — epics, stories,
 template = "projects/single.html"
 
 [extra]
-thumbnail = "inventory"
+thumbnail = "wordle"
 role = "Scrum team member"
 duration = "2 sprints"
 

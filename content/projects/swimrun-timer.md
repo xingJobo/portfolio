@@ -5,7 +5,7 @@ description = "Solo customer app — Angular and Slim PHP to time races per lane
 template = "projects/single.html"
 
 [extra]
-thumbnail = "migration"
+thumbnail = "swimrun-timer"
 role = "Solo developer"
 
 [[extra.tags]]
